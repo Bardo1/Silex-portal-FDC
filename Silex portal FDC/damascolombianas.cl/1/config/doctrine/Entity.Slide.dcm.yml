@@ -1,0 +1,21 @@
+#config/doctrine/Entity.Slide.dcm.yml
+Entity\Slide:
+
+    type: entity
+    table: slide
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        url:
+            type: string
+            lenght: 255
+
+        portada:
+            type: string
+            lenght: 255
+
+    lifecycleCallbacks: {  }

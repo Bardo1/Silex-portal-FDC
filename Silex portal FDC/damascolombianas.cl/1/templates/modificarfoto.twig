@@ -1,0 +1,199 @@
+{% extends "layout.twig" %}
+
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+
+ {% endblock %}
+
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+
+{% if  app.session.get('user') is not null %}
+    {% if  (app.session.get('user').username=="useradmin1" )  or (app.session.get('user').username=="useradmin2") %}
+    <div class="container">
+        <br> </br>
+        <!--left-->
+        <div class="row">
+            <div class="col-xs-3 ">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!-- Left -->
+
+                        <legend>Panel de Administrador</legend>
+                        <hr>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de ofertas  <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('ingresarofertalaboral') }}" title="Bootstrap 3 ListGroup">Ingresar oferta laboral</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificarofertalaboral12') }}" title="Bootstrap 3 ListGroup">Modificar oferta laboral</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminarofertalaboral12') }}" title="Bootstrap 3 ListGroup">Eliminar oferta laboral</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de usuarios  <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('verusuarios') }}" title="Bootstrap 3 ListGroup">Ver usuarios</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminarusuarios12') }}" title="Bootstrap 3 ListGroup">Eliminar usuarios</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de postulaciones  <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('verpostulacionoferta12') }}" title="Bootstrap 3 Icons">Ver Postulaciones a Oferta</a></li>
+                                <li><a href="{{ app.url_generator.generate('revisarofertas') }}" title="Bootstrap 3 Icons">Revisar ofertas laborales</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de noticias <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('ingresarnoticia') }}" title="Bootstrap 3 Icons">Ingresar noticia</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminarnoticia12') }}" title="Bootstrap 3 Icons">Eliminar noticia</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de fotos <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('ingresaralbum') }}" title="Bootstrap 3 Icons">Crear album</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminaralbum12') }}" title="Bootstrap 3 Icons">Eliminar album</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificaalbum12') }}" title="Bootstrap 3 Icons">Modificar album</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificaportadaalbum12') }}" title="Bootstrap 3 Icons">Modificar foto portada album</a></li>
+                                <li><a href="{{ app.url_generator.generate('ingresarfoto') }}" title="Bootstrap 3 Icons">Ingresar foto</a></li>
+                                <li><a href="{{ app.url_generator.generate('elimarfoto12') }}" title="Bootstrap 3 Icons">Eliminar foto</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificarfoto12') }}" title="Bootstrap 3 Icons">Modificar foto</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de slide <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('seleccion1') }}" title="Bootstrap 3 Icons">Seleccionar slide inicial </a></li>
+                                <li><a href="{{ app.url_generator.generate('ingresarslide') }}" title="Bootstrap 3 Icons">Ingresar foto slide</a></li>
+                                <li><a href="{{ app.url_generator.generate('unacosa1') }}" title="Bootstrap 3 Icons">Elimina foto slide</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+                        <form  id="form3" name="form3" action="{{ app.url_generator.generate('enviarmensaje1') }}" method="post">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary"> Enviar aviso </button>
+                        </form>
+
+                        <br>
+                        <form  id="form3" name="form3" action="{{ app.url_generator.generate('calendario1') }}" method="post">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary"> Calendario </button>
+                        </form>
+                        <br>
+                        <form  id="form3" name="form3" action="{{ app.url_generator.generate('cambiocontra12') }}" method="post">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary"> Cambiar Contraseña </button>
+                        </form>
+                    </div><!-- /span-3 -->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            {% if resultado is  defined %}
+                                {% if resultado== true %}
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong>Exito!</strong>  La foto ha sido modificada!
+                                    </div>
+                                {% endif %}
+                                {% if resultado==false %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong>Error !</strong>  La foto no ha sido modificada!
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
+                            <form id="form2" name="form2" action="{{ app.url_generator.generate('despliegafotomodificar1') }}" method="post" class="Buscar">
+                                <fieldset>
+                                    <legend>Modificar foto</legend>
+                                    <label class="control-label" for="textarea">Seleccion de album</label>
+                                    <div class="controls">
+                                        <select class="selectpicker" id="id" name="id" >
+                                            {% for album in album %}
+                                                <option value="{{ album.id }}">{{ album.id }} {{ album.titulo }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                          <br> </br>
+                                          <button type="submit" name="Buscar" id="Buscar" value="Buscar" class="btn btn-primary">Buscar</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                                    <br> </br>
+
+                        </div><!--/center-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- /container -->
+    </div>
+    </div>
+        <br> </br>
+        <br> </br>
+    {% endif %}
+{% endif %}
+{% endblock %}

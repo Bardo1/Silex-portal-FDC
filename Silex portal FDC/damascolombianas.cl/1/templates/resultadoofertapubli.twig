@@ -1,0 +1,49 @@
+{% extends "layout.twig" %}
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+{% block content %}
+    <br> </br>
+    <br> </br>
+    <br> </br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3> Ya se ha registrado el ofrecimiento de su oferta laboral </h3>
+                        <h5> La oferta será revisada por el administrador del sistema para comprobar si cumple con los requerimientos necesarios antes de su publicación </h5>
+                        <li ><a href="{{ app.url_generator.generate('inicio') }}" title="Bootstrap 3 ListGroup">Inicio</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br> </br>
+        <br> </br>
+        <br> </br>
+        <br> </br>
+
+        <br> </br>
+    </div><!-- /container -->
+    <br> </br>
+    <br> </br>
+    <br> </br>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

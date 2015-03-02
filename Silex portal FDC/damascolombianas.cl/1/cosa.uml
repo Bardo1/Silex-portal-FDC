@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\Entity\Contacto</OriginalElement>
+  <nodes>
+    <node x="565.0" y="593.0">\Entity\Usuario</node>
+    <node x="0.0" y="593.0">\Entity\Contacto</node>
+    <node x="0.0" y="0.0">\Entity\Informacion</node>
+    <node x="1110.0" y="593.0">\Entity\Postulacion</node>
+    <node x="625.0" y="0.0">\Entity\OfertaLaboral</node>
+    <node x="0.0" y="1126.0">\Entity\Mensaje</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.8110473457675753" x="267.1211745975588" y="293.60180435167166" />
+  <SelectedNodes>
+    <node>\Entity\Informacion</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constants</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

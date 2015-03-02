@@ -1,0 +1,28 @@
+#config/doctrine/Entity.Mensaje.dcm.yml
+Entity\Noticia:
+
+    type: entity
+    table: noticia
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        fecha:
+            type: datetime
+        titulo:
+            type: string
+            lenght: 255
+        referencia:
+            type: string
+            lenght: 255
+        contenido:
+            type: string
+            lenght: 255
+        foto:
+            type: string
+            lenght: 255
+
+    lifecycleCallbacks: {  }

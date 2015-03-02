@@ -1,0 +1,67 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li class="active"><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+
+ {% endblock %}
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                        <tr>
+                            <div class="row">
+
+                                <h2 class="intro-text text-center"> <legend>Registro de noticias</legend>
+                                </h2>
+                               <div class="col-xs-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th><label>Id</label></th>
+                                    <th><label>Fecha</label></th>
+                                    <th>Descripción</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if noticia!=null  %}
+                                {% for noticia in noticia %}
+                                <tr>
+                                    <td >{{ noticia.id }}</td>
+                                    <td >{{ noticia.fecha|date("Y/m/d") }}</td>
+                                    <td ><a href="{{ app.url_generator.generate('noticiadesplegada', {'id': noticia.id }) }}">{{ noticia.titulo }}</td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <strong>No se encontraron noticias</strong>
+                                {% endif %}
+                                </tbody>
+                            </table>
+                                </div>
+                            </div>
+                        </tr>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <br> </br>
+{% endblock %}

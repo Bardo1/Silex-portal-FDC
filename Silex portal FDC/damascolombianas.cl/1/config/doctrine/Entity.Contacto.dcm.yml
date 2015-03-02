@@ -1,0 +1,36 @@
+#config/doctrine/Entity.Contacto.dcm.yml
+Entity\Contacto:
+
+    type: entity
+    table: contacto
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        calle:
+            type: string
+            lenght: 255
+        numero:
+            type: string
+            lenght: 255
+        otros:
+             type: string
+             lenght: 255
+        comuna:
+             type: string
+             lenght: 255
+        email:
+             type: string
+             lenght: 255
+        fono:
+             type: string
+             lenght: 255
+        movil:
+             type: string
+             lenght: 255
+
+
+    lifecycleCallbacks: {  }

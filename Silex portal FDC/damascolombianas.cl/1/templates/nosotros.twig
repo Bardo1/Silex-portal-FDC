@@ -1,0 +1,70 @@
+{% extends "layout.twig" %}
+
+
+
+ {% block contentbarra %}
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li class="active" ><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+
+{% block content %}
+
+<!-- Main -->
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend>Nosotros</legend>
+                        <div class="">
+                            <b><h>Misión de la Fundación Damas Colombianas (FDC)</h></b>
+                            <p>Liderar, entre la comunidad colombiana residente en Chile, el fortalecimiento del compromiso social de personas y empresas colombianas y/o relacionadas con Colombia, a través del aporte solidario y voluntario en favor de personas beneficiadas por nuestra obra social. Esta labor se desarrolla dentro de un espíritu de integración –sentimiento y valores de la cultura que nos unen como asociadas– y también con la esperanza que la buena imagen de Colombia prevalezca en la visión de la comunidad colombiana. </p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+
+                                <b><h>Visión FDC</h></b>
+                                <p>Es una organización social sin fines de lucro, establecida formalmente, creada por colombianas residentes en Chile, conformada por colombianos y extranjeros con vínculos con Colombia, comprometidos con la ayuda social, que trabajan desde su propia sede como un gran equipo de voluntarios organizado, integrado y dispuesto a dar lo mejor de sí para desarrollar y sostener su obra social orientada a solidarizar con inmigrantes colombianos y chilenos con carencias especiales relacionadas con su obra social.</p>
+                                <b><h>Objetivos FDC</h></b>
+                                <p>1- Integrar a la comunidad colombiana en Chile asociada en la FDC.</p>
+                                <p>2- Ayudar solidariamente a personas sin recursos mediante el apoyo y/o desarrollo de obras sociales.</p>
+
+
+                            </div>
+                            <div class="col-xs-6">
+
+                                        <div class="">
+                                            <a href="#" class="thumbnail">
+                                                <img src="{{ app.request.basepath }}/images/cine.JPG" alt="image" width="450" height="290" /></a></td>
+                                            </a>
+                                        </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+

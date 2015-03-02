@@ -1,0 +1,111 @@
+{% extends "layout.twig" %}
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+{% block content %}
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+
+    <div class="container">
+        <div id="myCarousel"  class="carousel slide" data-interval="3000" data-ride="carousel">
+            <!-- Carousel indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <!-- Carousel items -->
+            <div class="carousel-inner" >
+                <div class="active item"  align="center">
+                    <img   src="{{ app.request.basepath }}/images/{{direccion}}" WIDTH=9000 HEIGHT=400 alt="">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                {% for slide in slide %}
+                     {% if slide.portada=="" %}
+                        <div class="item"  align="center">
+                           <img src="{{ app.request.basepath }}/images/{{slide.url}}" WIDTH=9000 HEIGHT=400 alt="...">
+                           <div class="carousel-caption">
+                          </div>
+                        </div>
+                     {% endif %}
+                {% endfor %}
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2 class="intro-text text-center">  <legend> <h1>Noticias</h1></legend>
+                            </h2>
+
+                            {% for noticia in noticia %}
+
+                            {% if loop.index <= 9 %}
+                                <div class="col-md-4 portfolio-item">
+                                    <div class="panel panel-default">
+                                            <a class="thumbnail img-responsive" href="{{ app.url_generator.generate('noticiadesplegada', {'id': noticia.id }) }}" title="{{ noticia.titulo }}"> <img  style="width: 250px; height: 200px;"  src="{{ app.request.basepath }}/images/{{ noticia.foto }}"  alt="a"/> </a>
+
+                                        <h4>  <a href="{{ app.url_generator.generate('noticiadesplegada', {'id': noticia.id }) }}" title="{{ noticia.titulo }}">{{ noticia.titulo|length > 70 ? noticia.titulo|slice(0, 70) ~ '...' : noticia.titulo  }}</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% endfor %}
+                            <br> </br>
+                        </div>
+
+                        <div class="panel-body">
+                            <form  id="form3" name="form3" action="{{ app.url_generator.generate('registronoticias') }}" method="post">
+                                <div>
+                                <div class="col-md-4 portfolio-item">
+                                        <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-default"    >Ver registro de noticias</button>
+                                </div>
+                                </div>
+                            </form>
+
+                            <br> </br>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    <br> </br>
+    <br> </br>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+    <label>aca deberia ser</label>
+    <td>aca deberia ser</td>
+    {% for OfertaLaboral in ofertalaboral %}
+        <tr>
+            <div class="row">
+                <div class="col-xs-12">
+                    <td>{{ OfertaLaboral.id }}</td>
+                    <BR>
+                    <td>{{ OfertaLaboral.Descripcion }}</td>
+                    <BR>
+                    <td>{{ OfertaLaboral.requisitos }}</td>
+                    <BR>
+                    <td>{{ OfertaLaboral.ubicacion }}</td>
+                    <BR>
+                    <td>{{ OfertaLaboral.beneficios }}</td>
+                    <BR>
+                    <td>{{ OfertaLaboral.visibilidad }}</td>
+                    <BR>
+                    <hr />
+                </div>
+            </div>
+        </tr>
+        <hr/>
+        <hr/>
+    {% endfor %}
+{% endblock %}

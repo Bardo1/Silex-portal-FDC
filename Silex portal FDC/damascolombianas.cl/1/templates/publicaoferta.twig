@@ -1,0 +1,164 @@
+{% extends "layout.twig" %}
+
+
+
+ {% block contentbarra %}
+
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li class="active" ><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+ {% endblock %}
+
+
+
+{% block content %}
+<!-- Main -->
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+        <div class="container">
+
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend>Publicar oferta laboral (uso exclusivo de empleadores)</legend>
+                        <div class="">
+                            <h>En este espacio, los empleadores pueden informar de sus ofertas laborales y solicitar su publicación (indicar el plazo final para presentar postulaciones). Antes de ser publicada, la oferta será revisada para confirmar si cumple con los requisitos mínimos para su publicación.</h>
+                            <br>
+                            <br>
+                                    <legend>Ingrese los datos necesarios para la publicación</legend>
+                                    <div class="col-md-6 col-md-offset-3">
+                               <form class="form-horizontal" action="{{ app.url_generator.generate('guardaofertapublicada') }}" method="post">
+                                   <fieldset>
+                                                        <!-- Form Name -->
+                                                        <legend>Datos del empleador</legend>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Nombre y apellido</label>
+                                                            <div class="controls">
+                                                                <input  style="width: 400px; "  type="text" class="form-control" placeholder="" id="nombre" name="nombre"  value="" required="">
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Correo electrónico</label>
+                                                            <div class="controls">
+                                                                <input  style="width: 400px; "  type="text" class="form-control" placeholder="@" id="correo" name="correo"  value="" required="">
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Teléfono</label>
+                                                            <div class="controls">
+                                                                <input  style="width: 400px; "  type="text" class="form-control" placeholder="" id="telefono" name="telefono"  value="" required="">
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Otros datos de contacto</label>
+                                                            <div class="controls">
+                                                                <input  style="width: 400px; " type="text" class="form-control" placeholder="" id="otros" name="otros"  value="">
+                                                            </div>
+                                                        </div>
+                                                        <!-- Form Name -->
+                                                        <legend>Datos de oferta laboral a publicar</legend>
+
+                                                       <div class="control-group">
+                                                            <div class="controls">
+                                                              <input  type="hidden"  type="date" name="fechapublicacion" id="fechapublicacion" >
+                                                            </div>
+                                                       </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Descripción</label>
+                                                            <div class="controls">
+                                                                <textarea  style="width: 450px; height: 70px;" id="descripcion" name="descripcion" placeholder="Ej: Albañil"  value=""  ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Beneficios</label>
+                                                            <div class="controls">
+                                                                <textarea style="width: 450px; height: 70px;" id="beneficios" name="beneficios" placeholder="Ej: 350.000"  value="" ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Ubicacion</label>
+                                                            <div class="controls">
+                                                                <textarea style="width: 450px; height: 70px;" id="ubicacion" name="ubicacion" placeholder=" Ej: Santiago centro avenida 123" value="" ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Requisitos</label>
+                                                            <div class="controls">
+                                                                <textarea style="width: 450px; height: 70px;" id="requisitos" name="requisitos" placeholder="Ej: titulo, cetificado, experiencia en el cargo"  value="" ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Textarea -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="textarea">Otros datos</label>
+                                                            <div class="controls">
+                                                                <textarea style="width: 450px; height: 70px;" id="otrosd" name="otrosd" placeholder="" value="" ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Button (Double) -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="button1id"></label>
+                                                            <div class="controls">
+                                                                <a href="#" class="btn btn-success"  data-toggle="modal"  data-target="#basicModal">Ingresar Oferta</a>
+                                                                <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <b><h>Confirmar ingreso</h> </b>
+                                                                                <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary">Aceptar</button>
+
+                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true" >Cancelar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                    </fieldset>
+                               </form>
+                                        </div>
+                                    </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

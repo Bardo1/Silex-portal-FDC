@@ -1,0 +1,146 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+    <br> </br>
+    <!--left-->
+    <div class="row">
+    <div class="col-xs-3 ">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!-- Left -->
+                <legend>Panel de usuario</legend>
+                <hr>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-header"></li>
+                    <li class="active"><a href="{{ app.url_generator.generate('buscaperfilo', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Mi CV</a></li>
+                    <li><a href="{{ app.url_generator.generate('buscaperfilo2', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Actualizar CV</a></li>
+                    <li><a href="{{ app.url_generator.generate('sub') }}" title="Bootstrap 3 Panel">Subir curriculum</a></li>
+                    <li ><a href="{{ app.url_generator.generate('mensajes') }}" title="Bootstrap 3 Icons">Mensajes</a></li>
+                    <li><a href="{{ app.url_generator.generate('postulacionesusuario', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Postulaciones</a></li>
+                </ul>
+            </div><!-- /span-3 -->
+        </div>
+    </div>
+
+
+    <div class="row">
+    <div class="col-md-8">
+    <div class="panel panel-default">
+
+    <div class="panel-body">
+    <div class="panel panel-info">
+        <div class="panel-heading">Antecedentes Personales</div>
+        <div class="panel-body">
+            {% for usuario in usuario %}
+            <div>
+                <label>Nombres: <td>{{ usuario.informacion.nombres }}</td> </label>
+            </div>
+            <div>
+                <label>Apellido paterno: <td>{{ usuario.informacion.apellidopaterno }}</td></label>
+            </div>
+            <div>
+                <label>Apellido materno: <td>{{ usuario.informacion.apellidomaterno }}</td></label>
+            </div>
+            <div>
+                <label>Fecha de nacimiento: <td>{{ usuario.informacion.fechanacimiento|date("Y/m/d") }}</td></label>
+            </div>
+            <div>
+                <label>Estado civil: <td>{{ usuario.informacion.estadocivil }}</td></label>
+            </div>
+            <div>
+                <label>Sexo: <td>{{ usuario.informacion.sexo }}</td></label>
+            </div>
+            <div>
+                <label>Nacionalidad: <td>{{ usuario.informacion.nacionalidad }}</td></label>
+            </div>
+            <div>
+                <label>Curriculum: <td>{{ usuario.informacion.curriculum }}</td></label>
+            </div>
+        </div><!--/center-->
+    </div>
+    </div>
+        <div class="panel-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">Otros datos</div>
+                <div class="panel-body">
+                        <div>
+                            <label> Calle: <td>{{ usuario.contacto.calle }}</td> </label>
+                        </div>
+                        <div>
+                            <label>Numero: <td>{{ usuario.contacto.numero }}</td> </label>
+                        </div>
+                        <div>
+                            <label>Otros: <td>{{ usuario.contacto.otros }}</td> </label>
+                        </div>
+                        <div>
+                            <label>Comuna: <td>{{ usuario.contacto.comuna }}</td> </label>
+                        </div>
+                        <div>
+                            <label>Email: <td>{{ usuario.contacto.email }}</td> </label>
+                        </div>
+                        <div>
+                            <label>Fono: <td>{{ usuario.contacto.fono }}</td> </label>
+                        </div>
+                        <div>
+                            <label>Movil: <td>{{ usuario.contacto.movil }}</td> </label>
+                        </div>
+                    {% endfor %}
+                </div><!--/center-->
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">Curriculum</div>
+                <div class="panel-body">
+                    <div class="col-md-3">
+                        <div class="controls">
+
+                 {% for usuario in usuario %}
+
+                 {% if usuario.informacion.curriculum== "" %}
+                        <div>
+                        <label>CV Adjunto :Sin Curriculum Adjunto</label>
+                       </div>
+                 {% else %}
+                         <div>
+                         <label>CV Adjunto :</label>
+                         {{ usuario.informacion.curriculum }}
+                         <a href="{{ app.request.basepath }}/upload/{{ usuario.informacion.curriculum }}"    download="{{ usuario.informacion.curriculum }}">Descargar su curriculum : {{ usuario.informacion.curriculum }} </a>
+                         </div>
+                 {% endif %}
+
+                {% endfor %}
+                    </div>
+                </div><!--/center-->
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div><!-- /container -->
+    </div>
+    <!-- Main -->
+    <br> </br>
+    </div>
+
+    </div>
+{% endblock %}

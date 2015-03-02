@@ -1,0 +1,240 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+    <br> </br>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Buscar trabajo</h2>
+                    <form class="form-horizontal" action="{{ app.url_generator.generate('busqueda') }}" method="post">
+                        <fieldset>
+                            <div class="control-group">
+                                <div class="row">
+                                    <!-- Text input-->
+                                    <div class="col-md-5">
+                                        <label class="control-label" for="selectbasic">Palabra clave</label>
+                                        <div class="controls">
+                                            <input type="text"  size="25" name="bus" id="bus"  placeholder="Buscar">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="selectbasic">Fecha</label>
+                                        <div class="controls">
+                                            <input type="date" name="fechapubli" id="fechapubli" value="">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-2">
+                                        <label class="control-label" for="textinput">ID</label>
+                                        <div class="controls">
+                                            <input id="id1" name="id1" value="" type="text" placeholder="" size="3" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-default">Buscar oferta</button>
+                                </div>
+                                </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--left-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            {% for OfertaLaboral in ofertalaboral %}
+                                <tr>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <td> <b>ID :</b> {{ OfertaLaboral.id }}</td>
+                                            <BR>
+                                           <big> <b> <p >Fecha de publicación</p></b></big>
+                                            <td>{{ OfertaLaboral.fechapublicacion|date("m/d/Y") }}</td>
+                                            <BR>
+                                            <big> <b> <p >Descripción</p></b></big>
+                                            <td>{{ OfertaLaboral.Descripcion }}</td>
+                                            <BR>
+                                            <big> <b><p >Requisitos</p></b></big>
+                                            <td>{{ OfertaLaboral.requisitos }}</td>
+                                            <BR>
+                                            <big> <b> <p >Ubicación</p></b></big>
+                                            <td>{{ OfertaLaboral.ubicacion }}</td>
+                                            <BR>
+                                            <big> <b> <p >Beneficios</p></b></big>
+                                            <td>{{ OfertaLaboral.beneficios }}</td>
+                                            <BR>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </tr>
+             {% if app.session.get('user') is null %}
+                   <b><p>Preguntas al postulante:</p></b>
+                   <p>Tus respuestas son indispensables para postular al cargo</p>
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>1.- Indique experiencia</p>
+                                    <input readonly=”readonly” id="textinput" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>2.- Indique nivel educacional</p>
+                                    <input readonly=”readonly” id="textinput" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>3.- Indique pretensión de renta</p>
+                                    <input readonly=”readonly” id="textinput" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>4. Disponibilidad</p>
+                                    <input readonly=”readonly” id="textinput" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Button -->
+                            <BR>
+                    <a href="#" class="btn btn-primary"
+                       data-toggle="modal"
+                       data-target="#basicModal">Postular</a>
+                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h>Para postular a una oferta laboral debe haber iniciado sesion</h>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form  id="form2" name="form2" action="{{ app.url_generator.generate('login3') }}" method="post">
+                                        <input   type="hidden" id="idofer" name="idofer"  value="{{ OfertaLaboral.id }}" size=70   placeholder="" class="input-xlarge" required>
+                                    </form>
+                                    <form  id="form2" name="form2" action="{{ app.url_generator.generate('login3') }}" method="post">
+                                        <fieldset>
+                                            <input type="hidden" id="idofer" name="idofer"  value="{{ OfertaLaboral.id }}" size=70   placeholder="" class="input-xlarge" required>
+                                            <input name="username" id="username" type="text" placeholder="Correo electronico">
+                                            <input name="password" id="password" type="password" placeholder="Password"><br>
+                                            <button   type="submit" name="login" id="login" value="login" class="btn btn-primary" class="glyphicon glyphicon-log-in" > Iniciar Sesion</button>
+                                            <BR>
+                                            <a href="{{ app.url_generator.generate('registrodeusuario') }}">Registrarse</a><br>
+                                            <a href="{{ app.url_generator.generate('reenviarcontrasenia') }}">Olvido Contraseña?</a><br>
+                                        </fieldset>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </fieldset>
+                    </form>
+         {% else %}
+               <form class="form-horizontal" action="{{ app.url_generator.generate('ingresarpostulacion') }}" method="post">
+                     <fieldset>
+
+                        <div class="row">
+                          <div class="col-xs-12">
+                                            <p>Contesta las siguientes preguntas. Tus respuestas son indispensables para postular al cargo</p>
+
+                            <input   type="hidden" id="idoferta" name="idoferta"  value="{{ OfertaLaboral.id }}" size=70   placeholder="" class="input-xlarge" required>
+                            <input   type="hidden" id="idusuario" name="idusuario"  value="{{ app.session.get('id').id }}" size=70   placeholder="" class="input-xlarge" required>
+
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>1. Indique experiencia</p>
+                                    <input  id="experiencia" name="experiencia" value="{% if experiencia is defined %}{{ experiencia }}{% endif %}" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>2.- Indique nivel educacional</p>
+                                    <input  id="niveleducacional" name="niveleducacional"  value="{% if niveleducacional is defined %}{{ niveleducacional }}{% endif %}" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>3.- Indique pretension de renta</p>
+                                    <input  id="pretensionrenta" name="pretensionrenta"  value="{% if pretensionrenta is defined %}{{ pretensionrenta }}{% endif %}" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>4. Disponibilidad</p>
+                                    <input  id="disponibilidad"  name="disponibilidad" value="{% if disponibilidad is defined %}{{ disponibilidad }}{% endif %}" size=60  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="singlebutton"></label>
+                                <div class="controls">
+                                    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Postular</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        </fieldset>
+                    </form>
+             {% endif %}
+                </div><!--/center-->
+            </div>
+        </div>
+    </div>
+            {% endfor %}
+</div><!-- /container -->
+
+</div>
+<!-- Main -->
+
+<br> </br>
+</div>
+</div>
+</div>
+    </div>
+{% endblock %}

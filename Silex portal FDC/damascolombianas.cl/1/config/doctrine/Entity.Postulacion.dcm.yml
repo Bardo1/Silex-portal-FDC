@@ -1,0 +1,33 @@
+#config/doctrine/Entity.Postulacion.dcm.yml
+Entity\Postulacion:
+    type: entity
+    table: postulacion
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        experiencia:
+            type: string
+            lenght: 255
+        nivel_educacional:
+            type: string
+            lenght: 255
+        pretension_renta:
+            type: string
+            lenght: 255
+        disponibilidad:
+            type: string
+            lenght: 255
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inverseBy: postulaciones
+
+        oferta_laboral:
+            targetEntity: OfertaLaboral
+            inverseBy: postulaciones
+
+    lifecycleCallbacks: {  }

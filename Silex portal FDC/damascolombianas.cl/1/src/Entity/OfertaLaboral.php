@@ -1,0 +1,261 @@
+<?php
+
+namespace Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OfertaLaboral
+ *
+ * @ORM\Table(name="oferta_laboral")
+ * @ORM\Entity
+ */
+class OfertaLaboral
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_publicacion", type="datetime")
+     */
+    private $fecha_publicacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string")
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="requisitos", type="string")
+     */
+    private $requisitos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ubicacion", type="string")
+     */
+    private $ubicacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficios", type="string")
+     */
+    private $beneficios;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visibilidad", type="string")
+     */
+    private $visibilidad;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Postulacion", mappedBy="oferta_laboral")
+     */
+    private $postulaciones;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->postulaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fecha_publicacion
+     *
+     * @param \DateTime $fechaPublicacion
+     * @return OfertaLaboral
+     */
+    public function setFechaPublicacion($fechaPublicacion)
+    {
+        $this->fecha_publicacion = $fechaPublicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha_publicacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaPublicacion()
+    {
+        return $this->fecha_publicacion;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return OfertaLaboral
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set requisitos
+     *
+     * @param string $requisitos
+     * @return OfertaLaboral
+     */
+    public function setRequisitos($requisitos)
+    {
+        $this->requisitos = $requisitos;
+
+        return $this;
+    }
+
+    /**
+     * Get requisitos
+     *
+     * @return string 
+     */
+    public function getRequisitos()
+    {
+        return $this->requisitos;
+    }
+
+    /**
+     * Set ubicacion
+     *
+     * @param string $ubicacion
+     * @return OfertaLaboral
+     */
+    public function setUbicacion($ubicacion)
+    {
+        $this->ubicacion = $ubicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get ubicacion
+     *
+     * @return string 
+     */
+    public function getUbicacion()
+    {
+        return $this->ubicacion;
+    }
+
+    /**
+     * Set beneficios
+     *
+     * @param string $beneficios
+     * @return OfertaLaboral
+     */
+    public function setBeneficios($beneficios)
+    {
+        $this->beneficios = $beneficios;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficios
+     *
+     * @return string 
+     */
+    public function getBeneficios()
+    {
+        return $this->beneficios;
+    }
+
+    /**
+     * Set visibilidad
+     *
+     * @param string $visibilidad
+     * @return OfertaLaboral
+     */
+    public function setVisibilidad($visibilidad)
+    {
+        $this->visibilidad = $visibilidad;
+
+        return $this;
+    }
+
+    /**
+     * Get visibilidad
+     *
+     * @return string 
+     */
+    public function getVisibilidad()
+    {
+        return $this->visibilidad;
+    }
+
+    /**
+     * Add postulaciones
+     *
+     * @param \Entity\Postulacion $postulaciones
+     * @return OfertaLaboral
+     */
+    public function addPostulacione(\Entity\Postulacion $postulaciones)
+    {
+        $this->postulaciones[] = $postulaciones;
+
+        return $this;
+    }
+
+    /**
+     * Remove postulaciones
+     *
+     * @param \Entity\Postulacion $postulaciones
+     */
+    public function removePostulacione(\Entity\Postulacion $postulaciones)
+    {
+        $this->postulaciones->removeElement($postulaciones);
+    }
+
+    /**
+     * Get postulaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPostulaciones()
+    {
+        return $this->postulaciones;
+    }
+}

@@ -1,0 +1,24 @@
+
+
+página tilde en la a.
+
+wight height con minuscula.
+
+replicar informacion con los link con if
+
+
+
+tablas
+
+factores de peso de los actores.
+factores de peso de los casos de uso.
+Determinacion del factor de complejidad técnica.
+Determinacion del factor ambiente.
+calculo de esfuerzo:
+
+porcentajes de distribucion generica del esfuerzo.
+resultados de porcentajes de distribucion generica del esfuerzo.
+
+imagen 
+
+diagrama de obejeto 

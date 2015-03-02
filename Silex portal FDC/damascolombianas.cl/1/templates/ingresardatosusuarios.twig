@@ -1,0 +1,24 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>nombre</th>
+                    <th>email</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for proba in proba %}
+                        <tr>
+                            <td>{{ proba.id }}</td>
+                            <td>{{ proba.email }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

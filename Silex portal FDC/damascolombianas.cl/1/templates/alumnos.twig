@@ -1,0 +1,196 @@
+{% extends "main.twig" %}
+
+{% block content %}
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="navbar-form navbar-left" role="search">
+                <h2>Buscar trabajo</h2>
+                <h>Palabra clave</h>
+                <br> </br>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscar">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar Ofeta</button>
+            </form>
+        </div></div></div>
+<br> </br>
+<!--left-->
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <big> <b> <p >Fecha de publicación</p></b></big>
+                            <p id="dia1" name="dia1" ><?php echo  $dia1."/".$Mes1."/".$Anio1?></p>
+                            <big> <b> <p >Descripción</p></b></big>
+                            <p id="Descrip1" name="Descrip1"><?php echo $Descrip1?></p>
+                            <big> <b><p >Ubicación</p></b></big>
+                            <p id="Ubi1" name="Ubi1" ><?php echo  $Ubi1?></p>
+                            <big> <b> <p >Requerimientos</p></b></big>
+                            <p id="Reque1" name="Reque1" ><?php echo  $Reque1?></p>
+                            <big> <b> <p >Beneficios</p></b></big>
+                            <p id="Bene1" name="Bene1"><?php echo $Bene1?></p>
+                        </div>
+                    </div>
+                    <b><p>Preguntas al Postulante:</p></b>
+
+                    <?php
+
+if(!isset($_SESSION['userid']))
+{
+
+?>
+                    <p>Tus respuestas son indispensables para postular al cargo</p>
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>1. Indique oficio y nivel educacional</p>
+                                    <input readonly=”readonly” id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>2. Indique pretensiones de renta líquida</p>
+                                    <input readonly=”readonly” id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>3. Indique años y experiencia en relación al cargo ofrecido</p>
+                                    <input readonly=”readonly” id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>4. Indique sus números telefónicos actuales</p>
+                                    <input readonly=”readonly” id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>5. Indique disponibilidad para asumir el cargo ofrecido</p>
+                                    <input readonly=”readonly” id="textinput" size=70 name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="singlebutton"></label>
+                                <div class="controls">
+                                    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Postular</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <a href="#" class="btn btn-lg btn-success"
+                       data-toggle="modal"
+                       data-target="#basicModal">Abrir</a>
+                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>cuerpo modal</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+}else{
+?>
+
+                    <p>Contesta las siguientes preguntas. Tus respuestas son indispensables para postular al cargo</p>
+
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>1. Indique oficio y nivel educacional</p>
+                                    <input  id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>2.- Indique pretensiones de renta líquida</p>
+                                    <input  id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>3.- Indique años y experiencia en relación al cargo ofrecido</p>
+                                    <input  id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>4.Indique sus números telefónicos actuales</p>
+                                    <input  id="textinput" size=70  name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="textinput"></label>
+                                <div class="controls">
+                                    <p>5.- Indique disponibilidad para asumir el cargo ofrecido</p>
+                                    <input  id="textinput" size=70 name="textinput" type="text" placeholder="" class="input-xlarge" required>
+                                </div>
+                            </div>
+                            <!-- Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="singlebutton"></label>
+                                <div class="controls">
+                                    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Postular</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <?php
+  }
+?>
+
+                </div><!--/center-->
+            </div>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+</div>
+<!-- Main -->
+
+<br> </br>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout2.twig" %}
+
+{% block content %}
+    <form action="{{ app.url_generator.generate('insertar_item') }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <br />
+        <input type="text" name="nombre" id="nombre"
+               value="{% if nombre is defined %}{{ nombre }}{% endif %}" />
+        <br /><br />
+        <label for="descripcion">Descripci&oacute;n:</label>
+        <br />
+        <textarea name="descripcion" id="descripcion" rows="10" cols="50">
+            {% if descripcion is defined %}{{ descripcion }}{% endif %}
+        </textarea>
+        <br /><br />
+        <input type="submit" name="submit" value="A&ntilde;adir" />
+    </form>
+{% endblock %}

@@ -1,0 +1,1 @@
+[10-Nov-2014 13:15:48 UTC] PHP Fatal error:  Call to a member function get() on a non-object in /home/bardocom/public_html/empleos/src/New folder/controllers.php on line 52

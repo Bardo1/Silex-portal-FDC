@@ -1,0 +1,12 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+<?php
+    session_start();
+    session_destroy();
+    header('location: Inicio.php');
+?>
+
+
+{% endblock %}

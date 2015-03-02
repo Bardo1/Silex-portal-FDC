@@ -1,0 +1,76 @@
+{% extends "layout.twig"%}
+
+
+{% block contentbarra %}
+
+    <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+    <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+    <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+    <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+    <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+    <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+{% if  app.session.get('user') is not null %}
+    {% if (app.session.get('user').username=="useradmin1" )  or (app.session.get('user').username=="useradmin2")  %}
+
+    <div class="container">
+        <br> </br>
+
+        <div class="row">
+            <div class="col-xs-3 ">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend>Panel de Administrador</legend>
+                        <hr>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="nav-header"></li>
+                            <li><a href="{{ app.url_generator.generate('ingresarofertalaboral') }}" title="Bootstrap 3 ListGroup">Ingresar oferta laboral</a></li>
+                           </ul>
+                    </div>
+                </div>
+            </div>
+
+            {{ valor }}
+
+
+                <input   type="hidden" id="id" name="id"  value="{{ slide1.id }}" size=70   placeholder="" class="input-xlarge" required>
+                <legend>Noticia a eliminar</legend>
+                <div>
+                    <label>ID poracanoctm : {{ slide1.id }}</label>
+                </div>
+
+
+            <form id="form2" name="form2" action="{{ app.url_generator.generate('despliegaslideeliminar1') }}" method="post" class="Buscar">
+                <fieldset>
+                    <legend>Eliminar foto slide</legend>
+                    <label class="control-label" for="textarea">Seleccion de slide</label>
+                    <div class="controls">
+                        <select class="selectpicker" id="id" name="id" >
+                            {% for slide3 in  slide3 %}
+                                <option value="{{ slide3.id }}">{{ slide3.id }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" name="Buscar" id="Buscar" value="Buscar" class="btn btn-primary">Buscar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+    </div>
+        <br> </br>
+        <br> </br>
+    {% endif %}
+{% endif %}
+{% endblock %}

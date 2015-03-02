@@ -1,0 +1,121 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+        <div align="center">
+            <div>
+
+                <iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=fdamascolombianas%40gmail.com&amp;color=%23060D5E&amp;ctz=America%2FSantiago" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+           </div>
+        </div>
+
+        <br> </br>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+
+
+                        <legend>Vincúlate</legend>
+                        <div class="">
+                            <a href="#" class="thumbnail">
+                                <img src="{{ app.request.basepath }}/images/sociofdc123.png" width="751" height="337" alt="a" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend>Información útil</legend>
+                        <div class="panel-container">
+                            <div id="poste-6" class="tab-buttons-panel">
+                                <h>Cambios en las direcciones de las oficinas del Consulado y Embajada</h><BR>
+                                <h>Consulado: Avda. Andrés Bello 2211, local 103, Las Condes. Teléfono +562 2371 0740.<a href="https://maps.google.cl/maps?q=Andres+Bello+2211&amp;ie=UTF-8&amp;hq=&amp;hnear=0x9662cf67b4872ce5:0x3088c88b72acdd49,Andr%C3%A9s+Bello+2211,+Providencia,+Regi%C3%B3n+Metropolitana&amp;gl=cl&amp;ei=HI1UUuasE4f-9gTTgIHgDg&amp;ved=0CEAQ8gEwAA">Clic acá</a></h><BR>
+                                <h>Embajada: Los Militares 5885 piso 3 Las Condes Telf 22206273 / 222435850/ 22291898. <a href="https://maps.google.cl/maps?q=Los+Militares+5885&amp;ie=UTF-8&amp;hq=&amp;hnear=0x9662ced92d99cc35:0x5c17ced7d12e4260,Los+Militares+5885,+Las+Condes,+Regi%C3%B3n+Metropolitana&amp;gl=cl&amp;ei=k4xUUpWMMZKY9QSJqIHACQ&amp;ved=0CC8Q8gEwAA">Clic acá</a></h><BR>
+                            </div>
+
+                            <div id="post-6" class="tab-buttons-panel">
+                                <h>&nbsp;</h>
+                            </div>
+                            <div id="post-10" class="tab-buttons-panel"> </div>
+                        </div>
+                    </div><!--/center-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                    <hr>
+                    <h2 class="intro-text text-center"> <legend>Contáctenos</legend>
+                    </h2>
+                    <h4>Dirección de Correo </h4>
+                    <p><span class="lite">Correo electrónico:</span> fdc@damascolombianas.cl</p>
+
+                    <p>Envíenos un mensaje con tu duda, recomendación, consejo o pregunta.</p>
+                    <form  id="form2" name="form2" action="{{ app.url_generator.generate('enviarmail') }}" method="post">
+                       <fieldset>   <!-- Form Name -->
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label>Nombre</label>
+                                <input type="text" id="nombre" size=30 name="nombre"  class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Dirección de correo electrónico</label>
+                                <input type="email" id="email" size=30 name="email" type="text" placeholder="@" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Número de teléfono</label>
+                                <input id="telefono" size=30 name="telefono" type="tel" class="form-control">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group col-lg-12">
+                                <label>Mensaje</label>
+                                <textarea  id="Mensaje" name="Mensaje"  class="form-control" rows="6" ></textarea>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input type="hidden" name="save" value="contact">
+                                <button type="submit" class="btn btn-success">Enviar mensaje</button>
+                            </div>
+                        </div>
+                         </fieldset>
+                      </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,334 @@
+<?php
+
+namespace Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OfertaPublicada
+ *
+ * @ORM\Table(name="ofertapublicada")
+ * @ORM\Entity
+ */
+class OfertaPublicada
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_publicacion", type="datetime")
+     */
+    private $fecha_publicacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string")
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correo", type="string")
+     */
+    private $correo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string")
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="otrosdatos1", type="string")
+     */
+    private $otrosdatos1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string")
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="requisitos", type="string")
+     */
+    private $requisitos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ubicacion", type="string")
+     */
+    private $ubicacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficios", type="string")
+     */
+    private $beneficios;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="otrosdatos2", type="string")
+     */
+    private $otrosdatos2;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fecha_publicacion
+     *
+     * @param \DateTime $fechaPublicacion
+     * @return OfertaPublicada
+     */
+    public function setFechaPublicacion($fechaPublicacion)
+    {
+        $this->fecha_publicacion = $fechaPublicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha_publicacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaPublicacion()
+    {
+        return $this->fecha_publicacion;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return OfertaPublicada
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set correo
+     *
+     * @param string $correo
+     * @return OfertaPublicada
+     */
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+
+        return $this;
+    }
+
+    /**
+     * Get correo
+     *
+     * @return string 
+     */
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return OfertaPublicada
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set otrosdatos1
+     *
+     * @param string $otrosdatos1
+     * @return OfertaPublicada
+     */
+    public function setOtrosdatos1($otrosdatos1)
+    {
+        $this->otrosdatos1 = $otrosdatos1;
+
+        return $this;
+    }
+
+    /**
+     * Get otrosdatos1
+     *
+     * @return string 
+     */
+    public function getOtrosdatos1()
+    {
+        return $this->otrosdatos1;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return OfertaPublicada
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set requisitos
+     *
+     * @param string $requisitos
+     * @return OfertaPublicada
+     */
+    public function setRequisitos($requisitos)
+    {
+        $this->requisitos = $requisitos;
+
+        return $this;
+    }
+
+    /**
+     * Get requisitos
+     *
+     * @return string 
+     */
+    public function getRequisitos()
+    {
+        return $this->requisitos;
+    }
+
+    /**
+     * Set ubicacion
+     *
+     * @param string $ubicacion
+     * @return OfertaPublicada
+     */
+    public function setUbicacion($ubicacion)
+    {
+        $this->ubicacion = $ubicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get ubicacion
+     *
+     * @return string 
+     */
+    public function getUbicacion()
+    {
+        return $this->ubicacion;
+    }
+
+    /**
+     * Set beneficios
+     *
+     * @param string $beneficios
+     * @return OfertaPublicada
+     */
+    public function setBeneficios($beneficios)
+    {
+        $this->beneficios = $beneficios;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficios
+     *
+     * @return string 
+     */
+    public function getBeneficios()
+    {
+        return $this->beneficios;
+    }
+
+    /**
+     * Set otrosdatos2
+     *
+     * @param string $otrosdatos2
+     * @return OfertaPublicada
+     */
+    public function setOtrosdatos2($otrosdatos2)
+    {
+        $this->otrosdatos2 = $otrosdatos2;
+
+        return $this;
+    }
+
+    /**
+     * Get otrosdatos2
+     *
+     * @return string 
+     */
+    public function getOtrosdatos2()
+    {
+        return $this->otrosdatos2;
+    }
+}

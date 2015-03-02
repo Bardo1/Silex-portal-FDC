@@ -1,0 +1,42 @@
+#config/doctrine/Entity.OfertaLaboral.dcm.yml
+Entity\OfertaPublicada:
+    type: entity
+    table: ofertapublicada
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fecha_publicacion:
+            type: datetime
+        nombre:
+            type: string
+            lenght: 800
+        correo:
+            type: string
+            lenght: 800
+        telefono:
+            type: string
+            lenght: 800
+        otrosdatos1:
+            type: string
+            lenght: 800
+        descripcion:
+            type: string
+            lenght: 800
+        requisitos:
+            type: string
+            lenght: 800
+        ubicacion:
+            type: string
+            lenght: 800
+        beneficios:
+            type: string
+            lenght: 800
+        otrosdatos2:
+            type: string
+            lenght: 800
+
+    lifecycleCallbacks: {  }

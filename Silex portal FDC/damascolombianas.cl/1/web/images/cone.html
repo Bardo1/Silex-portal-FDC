@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MySql y PHP</title>
+</head>
+<body>
+	por aca si 
+<?php
+$server="localhost";
+$user="root";
+$password="";
+$database="pbase";
+$cn=mysql_connect($server, $user, $password) or die("Error al concetar al servidor mysql:".mysql_error());
+$db=mysql_select_db($database,$cn) or die("Error al conectar a la base de datos:".mysql_error());
+if($db)
+echo "Conexión satisfactoria";
+else
+echo "No conecto a la Base de Datos";
+?>
+</body>
+por aca tambien
+</html>

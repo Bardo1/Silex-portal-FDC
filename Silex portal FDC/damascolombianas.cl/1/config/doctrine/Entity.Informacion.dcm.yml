@@ -1,0 +1,37 @@
+#config/doctrine/Entity.Informacion.dcm.yml
+Entity\Informacion:
+
+    type: entity
+    table: informacion
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        nombres:
+            type: string
+            lenght: 255
+        apellido_paterno:
+            type: string
+            lenght: 255
+        apellid_omaterno:
+            type: string
+            lenght: 255
+        fecha_nacimiento:
+            type: datetime
+        estado_civil:
+            type: string
+            lenght: 255
+        sexo:
+            type: string
+            lenght: 255
+        nacionalidad:
+            type: string
+            lenght: 255
+        curriculum:
+            type: string
+            lenght: 255
+
+    lifecycleCallbacks: {  }

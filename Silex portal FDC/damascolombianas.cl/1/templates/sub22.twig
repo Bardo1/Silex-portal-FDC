@@ -1,0 +1,27 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+{% block content %}
+
+
+    <form action="" method="post" {{ form_enctype(form) }}>
+        <fieldset>
+            <input   type="hidden" id="id" name="id"  value="{{ app.session.get('id').id }}" size=70   placeholder="" class="input-xlarge" required>
+            <legend>Subir Curriculum</legend>
+            <b>{{message}}</b>
+            {{ form_widget(form) }}
+        </fieldset>
+        <input type="submit" name="Upload File" />
+    </form>
+{% endblock %}

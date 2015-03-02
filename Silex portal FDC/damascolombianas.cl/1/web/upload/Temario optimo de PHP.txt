@@ -1,0 +1,51 @@
+Temario
+Conceptos básicos de programación, y sobre cómo funciona el mundo web.
+Entorno de trabajo Apache, MySQL, PHP, phpmyadmin. Instalación de componentes.
+Análisis de los resultados de la función phpinfo().
+Conceptos básicos de PHP, etiquetas y forma de embeberlo dentro de HTML.
+Tipos de datos, variables, constantes
+Variables predefinidas
+Trabajo con condicionales
+Arrays Asociativos, trabajo con formularios
+Estructuras Cíclicas
+Trabajo con arreglos
+Trabajo con Funciones
+Trabajo con directorios, creación , eliminación
+Trabajo con htaccess
+Principios de la Programación Orientada a Objetos (Abstracción, Encapsulamiento, Principio de Ocultación, Poliformismo, Herencia)
+Tipos de entidades (Clases e Interfaces)
+Declarar una clase
+Modificadores de una Clase
+Atributos y Métodos de una clase
+Modificadores de Acceso
+Constructores y Destructores
+Clases Abstractas
+Métodos "getter / setter" o "accesores"
+Modificadores final, abstract y static
+Herencia
+Sobreescritura de Métodos
+UML ( Lenguaje Unificado de Modelado )
+Poliformismo, ejemplo práctico
+Interfaces, diseño y uso
+uso de la clase stdClass
+Manejo de errores con try catch, or die
+SPL (Standard PHP Library)
+ArrayObject
+ArrayIterator
+RecursiveArrayIterator
+DirectoryIterator
+SplObserver
+Mysql
+Creación de una tabla, edición y eliminación de la misma usando phpmyadmin
+Operaciones básicas, select, insert, update y delete
+Manejo de Condiciones, con where y join, inner join, lef tjoin y right join
+Manejo de store procedures creación
+Manejo de variables mysql, estructuras condicionales
+Conexión php y mysql
+Manejo de conexión y cotejamiento de caracteres especiales
+MVC Modelo Vista Controlador
+Cómo se representa
+Modelo, la lógica de datos
+Vista, presentación de los datos
+Controlador, la interacción del usuario con el sistema
+Desarrollo de un sistema de altas, bajas y modificaciones

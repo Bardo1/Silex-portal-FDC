@@ -1,0 +1,386 @@
+
+
+//ingresar el registro de usuarios a la base de datos
+$app->post('/guardarusuario1', function() use($app) {
+
+        $em = $app["orm.em"];
+        $urep1 = $em->getRepository('Entity\Usuario');
+        $usuario =$urep1->findBy(array('email' => $app['request']->get('email') ));
+
+        if ($usuario!=null) {
+            return "esta huea esta repetida";
+        }
+        else
+        {
+          $rows = $app['db']->insert('usuario', array(
+          'email' => $app['request']->get('email'),
+          'rut' => $app['request']->get('rut'),
+          'clave' => $app['request']->get('clave')));
+
+          $rows = $app['db']->insert('informacion', array(
+          'nombres' => $app['request']->get('nombres'),
+          'apellidopaterno' => $app['request']->get('apellidopaterno'),
+          'apellidomaterno' => $app['request']->get('apellidomaterno'),
+          'fechanacimiento' => $app['request']->get('fechanacimiento'),
+          'estadocivil' => $app['request']->get('estadocivil'),
+          'sexo' => $app['request']->get('sexo'),
+          'nacionalidad' => $app['request']->get('nacionalidad'),
+          'curriculum' => ""));
+
+          $rows = $app['db']->insert('contacto', array(
+          'calle' => $app['request']->get('calle'),
+          'numero' => $app['request']->get('numero'),
+          'otros' => $app['request']->get('otros'),
+          'comuna' => $app['request']->get('comuna'),
+          'email' => $app['request']->get('email1'),
+          'fono' => $app['request']->get('fono'),
+          'movil' => $app['request']->get('movil')));
+
+            return $app['twig']->render('bienvenida.twig', array('username' => $app['request']->get('email'),'clave' => $app['request']->get('clave')));
+
+        }
+})->bind('guardarusuario1');
+
+
+
+
+// Para ver los atributos de un usuario
+$app->get('/verusuario', function() use($app) {
+
+    $em = $app["orm.em"];
+    // Obtengo el usuario desde la base de datos
+    $usuario = $em->find('Entity\Usuario', $app['request']->get('id'));
+    // Muestro la informacion del usuario
+    return $app['twig']->render('usuario.twig', array('usuario' => $usuario));
+
+})->bind('verusuario');
+
+
+// despliega los usuarios y su informacion despliegueusuarios.twig.
+$app->get('/verusuarios1', function() use ($app) {
+    $em = $app["orm.em"];
+    $urep = $em->getRepository('Entity\Informacion');
+    $informacion = $urep->findall();
+    return $app['twig']->render('despliegueusuarios.twig', array('informacion' => $informacion ));
+})->bind('verusuarios1');
+
+
+
+//actualizacv
+$app->match('/buscaperfilo/{id}', function($id) use ($app) {
+    $em = $app["orm.em"];
+    // Repositorio que administra la entidad Usuario
+    $urep = $em->getRepository('Entity\Informacion');
+    $urep1 = $em->getRepository('Entity\Contacto');
+    // Obtengo un arreglo con todos los usuarios en la base de datos
+    $informacion = $urep->findBy(array('id' => $id));
+    $contacto = $urep1->findBy(array('id' => $id));
+    return $app['twig']->render('micv.twig', array('informacion' => $informacion, 'contacto' => $contacto ));
+})->bind('buscaperfilo');
+
+
+$app->match('/buscaperfilo2/{id}', function($id) use ($app) {
+    $em = $app["orm.em"];
+    $urep = $em->getRepository('Entity\Informacion');
+    $urep1 = $em->getRepository('Entity\Contacto');
+    $informacion = $urep->findBy(array('id' => $id));
+    $contacto = $urep1->findBy(array('id' => $id));
+    return $app['twig']->render('actualizarcv.twig', array('informacion' => $informacion, 'contacto' => $contacto ));
+})->bind('buscaperfilo2');
+
+
+
+
+
+
+
+//ingresar el registro de usuarios a la base de datos Registrodeusuario.twig
+$app->post('/ingresarusuario', function() use($app) {
+    // Crea la entidad Usuario
+    $usuario = new \Entity\Usuario();
+    // Agrega los atributos de la entidad
+    $usuario->setEmail($app['request']->get('email'));
+    $usuario->setRut($app['request']->get('rut'));
+    // Seguridad: http://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/
+    // A higher "cost" is more secure but consumes more processing power
+    $cost = 10;
+    // Create a random salt
+    $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+    // Prefix information about the hash so PHP knows how to verify it later.
+    // "$2a$" Means we're using the Blowfish algorithm. The following two digits are the cost parameter.
+    $salt = sprintf("$2a$%02d$", $cost) . $salt;
+    // Hash the password with the salt
+    $hash = crypt($app['request']->get('password'), $salt);
+    // Guardo el hash del usuario
+    $usuario->setClave($hash);
+    // Construccion de la informacion del usuario
+
+
+    $informacion = new \Entity\Informacion();
+    $informacion->setNombres($app['request']->get('nombres'));
+    $informacion->setApellidopaterno( $app['request']->get('apellidopaterno'));
+    $informacion->setApellidomaterno($app['request']->get('apellidomaterno'));
+    $informacion->setFechanacimiento($app['request']->get('fechanacimiento'));
+    $informacion->setEstadocivil( $app['request']->get('estadocivil'));
+    $informacion->setSexo($app['request']->get('sexo'));
+    $informacion->setNacionalidad($app['request']->get('nacionalidad'));
+    $informacion->setCurriculum( "");
+    //Agrego la informacion del usuario
+    $em = $app["orm.em"];
+    $em->persist($informacion);
+    $em->flush();
+    $usuario->setInformacion($informacion);
+
+
+   //construccion del contacto del usuario
+    $contacto = new \Entity\Contacto();
+    $contacto->setCalle($app['request']->get('calle'));
+    $contacto->setNumero( $app['request']->get('numero'));
+    $contacto->setOtros($app['request']->get('otros'));
+    $contacto->setComuna($app['request']->get('comuna'));
+    $contacto->setEmail( $app['request']->get('email'));
+    $contacto->setFono($app['request']->get('fono'));
+    $contacto->setMovil($app['request']->get('movil'));
+   //Agrego el contacto al usuario
+    $em1 = $app["orm.em"];
+    $em1->persist($contacto);
+    $em1->flush();
+    $usuario->setContacto($contacto);
+    // Obtengo el repositorio (conexion del modelo logico a la base de datos)
+    $em2 = $app["orm.em"];
+    // Hago persistir en usuario en el backend (o sea, la base de datos)
+    $em2->persist($usuario);
+    // Fuerzo el COMMIT a la BD.
+    $em2->flush();
+
+})->bind('insertar_item');
+
+
+
+//login para acceder a las cuentas de usuario o administrador
+$app->post('/login1', function () use ($app) {
+    $username = $app['request']->get('username');
+    $password = $app['request']->get('password');
+    $em = $app["orm.em"];
+    $urep1 = $em->getRepository('Entity\Usuario');
+    $usuario =$urep1->findBy(array('email' => $app['request']->get('username') ));
+
+    $cost = 10;
+    // Create a random salt
+    $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+    // Prefix information about the hash so PHP knows how to verify it later.
+    // "$2a$" Means we're using the Blowfish algorithm. The following two digits are the cost parameter.
+    $salt = sprintf("$2a$%02d$", $cost) . $salt;
+    // Hash the password with the salt
+    $hash = crypt($usuario[0]->getClave(), $salt);
+
+    echo $hash;
+    echo "   ";
+    echo $usuario[0]->getClave();
+
+    $salt = '$2a$07$usesomadasdsadsadsadasdasdasdsadesillystringfors';
+    $digest = crypt('rasmuslerdorf',  $usuario[0]->getClave());
+
+
+
+
+    if ($usuario[0]->getEmail() == $username && $hash == $password   ) {
+
+        $app['session']->set('user', array('username' => $username));
+        $app['session']->set('id', array('id' => $usuario[0]->getId()));
+
+    }
+   // return $app->redirect($app['url_generator']->generate('inicio'));
+})->bind('login1');
+
+
+
+
+#config/doctrine/Entity.Informacion.dcm.yml
+Entity\Informacion:
+    type: entity
+    table: informacion
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        nombres:
+            type: string
+            lenght: 255
+        apellidopaterno:
+            type: string
+            lenght: 255
+        apellidomaterno:
+            type: string
+            lenght: 255
+        fechanacimiento:
+            type: datetime
+        Estadocivil:
+            type: string
+            lenght: 255
+        sexo:
+            type: string
+            lenght: 255
+        nacionalidad:
+            type: string
+            lenght: 255
+        curriculum:
+            type: string
+            lenght: 255
+
+    lifecycleCallbacks: {  }
+
+
+
+#config/doctrine/Entity.Usuario.dcm.yml
+Entity\Usuario:
+    type: entity
+    table: usuario
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        email:
+            type: string
+            nullable: false
+            unique: true
+            lenght: 200
+        rut:
+            type: string
+            nullable: false
+            unique: true
+            lenght: 20
+        clave:
+            type: string
+            nullable: false
+            lenght: 200
+    oneToOne:
+        contacto:
+            targetEntity: Contacto
+            mappedBy: id
+        informacion:
+            targetEntity: Informacion
+            mappedBy: id
+
+
+
+    lifecycleCallbacks: {  }
+
+
+
+
+#config/doctrine/Entity.Mensaje.dcm.yml
+Entity\Contacto:
+    type: entity
+    table: contacto
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        calle:
+            type: string
+            lenght: 255
+        numero:
+            type: string
+            lenght: 255
+        otros:
+             type: string
+             lenght: 255
+        comuna:
+             type: string
+             lenght: 255
+        email:
+             type: string
+             lenght: 255
+        fono:
+             type: string
+             lenght: 255
+        movil:
+             type: string
+             lenght: 255
+    oneToOne:
+        usuario:
+          targetEntity: Usuario
+          mappedBy: id
+
+    lifecycleCallbacks: {  }
+
+
+
+
+
+
+
+$app->post('/modificar_informacion_contacto', function() use ($app) {
+
+    // Obtengo el repositorio (conexion del modelo logico a la base de datos)
+    $em = $app["orm.em"];
+    // Obtengo el repositorio (conexion del modelo logico a la base de datos)
+    $em = $app["orm.em"];
+    $id= $app['request']->get('id');
+    // Obtengo el usuario desde la base de datos
+    $usuario = $em->find('Entity\Usuario', $id);
+    
+    $usuario->getInformacion();
+    $usuario->getContacto();
+    // Hago persistir en usuario en el backend (o sea, la base de datos)
+    $em->persist($usuario);
+// Fuerzo el COMMIT a la BD.
+    $em->flush();
+
+    $informacion = $em->find('Entity\Informacion',$id);
+    $informacion->setNombres($app['request']->get('nombres'));
+    $informacion->setApellidopaterno( $app['request']->get('apellidopaterno'));
+    $informacion->setApellidomaterno($app['request']->get('apellidomaterno'));
+    $date = new DateTime($app['request']->get('fechanacimiento'));
+    $informacion->setFechanacimiento($date);
+    $informacion->setEstadocivil( $app['request']->get('estadocivil'));
+    $informacion->setSexo($app['request']->get('sexo'));
+    $informacion->setNacionalidad($app['request']->get('nacionalidad'));
+
+    $em->persist($informacion);
+    $em->flush();
+
+    $contacto = $em->find('Entity\Contacto', $app['request']->get('id'));
+    $contacto->setCalle($app['request']->get('calle'));
+    $contacto->setNumero( $app['request']->get('numero'));
+    $contacto->setOtros($app['request']->get('otros'));
+    $contacto->setComuna($app['request']->get('comuna'));
+    $contacto->setEmail( $app['request']->get('email'));
+    $contacto->setFono($app['request']->get('fono'));
+    $contacto->setMovil($app['request']->get('movil'));
+
+    $em->persist($contacto);
+    $em->flush();
+
+
+    return $app->redirect($app['url_generator']->generate('buscaperfilo2', array('id' => 1)));
+
+})->bind('modificar_informacion_contacto');
+
+
+
+
+
+
+
+
+
+
+$app->match('/buscaperfilo/{id}', function($id) use ($app) {
+    $em = $app["orm.em"];
+    // Repositorio que administra la entidad Usuario
+    $urep = $em->getRepository('Entity\Informacion');
+    $urep1 = $em->getRepository('Entity\Contacto');
+    // Obtengo un arreglo con todos los usuarios en la base de datos
+    $informacion = $urep->findBy(array('id' => $id));
+    $contacto = $urep1->findBy(array('id' => $id));
+    return $app['twig']->render('micv.twig', array('informacion' => $informacion, 'contacto' => $contacto ));
+})->bind('buscaperfilo');
+

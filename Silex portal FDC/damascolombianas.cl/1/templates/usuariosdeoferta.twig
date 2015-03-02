@@ -1,0 +1,247 @@
+
+
+
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+
+
+    <div class="container">
+        <br> </br>
+        <!--left-->
+        <div class="row">
+            <div class="col-xs-3 ">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend>Panel de Administrador</legend>
+                        <hr>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de ofertas  <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('ingresarofertalaboral') }}" title="Bootstrap 3 ListGroup">Ingresar oferta laboral</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificarofertalaboral12') }}" title="Bootstrap 3 ListGroup">Modificar oferta laboral</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminarofertalaboral12') }}" title="Bootstrap 3 ListGroup">Eliminar oferta laboral</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de usuarios  <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('verusuarios') }}" title="Bootstrap 3 ListGroup">Ver usuarios</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminarusuarios12') }}" title="Bootstrap 3 ListGroup">Eliminar usuarios</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de postulaciones  <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('verpostulacionoferta12') }}" title="Bootstrap 3 Icons">Ver Postulaciones a Oferta</a></li>
+                                <li><a href="{{ app.url_generator.generate('revisarofertas') }}" title="Bootstrap 3 Icons">Revisar ofertas laborales</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de noticias <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('ingresarnoticia') }}" title="Bootstrap 3 Icons">Ingresar noticia</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminarnoticia12') }}" title="Bootstrap 3 Icons">Eliminar noticia</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de fotos <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('ingresaralbum') }}" title="Bootstrap 3 Icons">Crear album</a></li>
+                                <li><a href="{{ app.url_generator.generate('eliminaralbum12') }}" title="Bootstrap 3 Icons">Eliminar album</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificaalbum12') }}" title="Bootstrap 3 Icons">Modificar album</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificaportadaalbum12') }}" title="Bootstrap 3 Icons">Modificar foto portada album</a></li>
+                                <li><a href="{{ app.url_generator.generate('ingresarfoto') }}" title="Bootstrap 3 Icons">Ingresar foto</a></li>
+                                <li><a href="{{ app.url_generator.generate('elimarfoto12') }}" title="Bootstrap 3 Icons">Eliminar foto</a></li>
+                                <li><a href="{{ app.url_generator.generate('modificarfoto12') }}" title="Bootstrap 3 Icons">Modificar foto</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Gestión de slide <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ app.url_generator.generate('seleccion1') }}" title="Bootstrap 3 Icons">Seleccionar slide inicial </a></li>
+                                <li><a href="{{ app.url_generator.generate('ingresarslide') }}" title="Bootstrap 3 Icons">Ingresar foto slide</a></li>
+                                <li><a href="{{ app.url_generator.generate('unacosa1') }}" title="Bootstrap 3 Icons">Elimina foto slide</a></li>
+                            </ul>
+                        </div>
+
+                        <br> </br>
+                        <form  id="form3" name="form3" action="{{ app.url_generator.generate('enviarmensaje1') }}" method="post">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary"> Enviar aviso </button>
+                        </form>
+
+                        <br>
+                        <form  id="form3" name="form3" action="{{ app.url_generator.generate('calendario1') }}" method="post">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary"> Calendario </button>
+                        </form>
+                        <br>
+                        <form  id="form3" name="form3" action="{{ app.url_generator.generate('cambiocontra12') }}" method="post">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary"> Cambiar Contraseña </button>
+                        </form>
+                    </div><!-- /span-3 -->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+
+                            <form id="form2" name="form2" action="{{ app.url_generator.generate('usuariosdeofertapostulaciones') }}" method="post" class="Buscar">
+                                <fieldset>
+                                    <legend>Ver postulantes a oferta laboral</legend>
+                                    <div class="control-group">
+                                        <label class="control-label" for="textinput">Ingrese id de oferta</label>
+
+
+                                        <label class="control-label" for="textarea">Selecciona la oferta laboral</label>
+                                        <div class="controls">
+                                            <select class="selectpicker" id="id" name="id" >
+                                                {% for oferta in  oferta %}
+                                                    <option value="{{ oferta.id }}">{{ oferta.id }}  {{ oferta.descripcion }} </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <br> </br>
+                                                <button type="submit" name="Buscar" id="Buscar" value="Buscar" class="btn btn-primary">Buscar</button>
+                                            </div>
+                                        </div>
+                                        <br> </br>
+
+
+
+
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <br> </br>
+
+                            <legend>Usuarios postulantes</legend>
+
+
+                                        {% for Postulacion in Postulacion %}
+
+
+                                            <div>
+                                                <label> Nombres: <td>{{ Postulacion.usuario.informacion.nombres }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Apellido paterno: <td>{{ Postulacion.usuario.informacion.apellidopaterno }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Apellido materno: <td>{{ Postulacion.usuario.informacion.apellidomaterno }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Email: <td>{{ Postulacion.usuario.email  }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Experiencia: <td>{{  Postulacion.experiencia }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Nivel educacional: <td>{{ Postulacion.niveleducacional }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Pretencion de renta: <td>{{ Postulacion.pretensionrenta }}</td> </label>
+                                            </div>
+                                            <div>
+                                                <label> Disponibilidad: <td>{{ Postulacion.disponibilidad }}</td> </label>
+                                            </div>
+
+
+
+                                                {% if Postulacion.usuario.informacion.curriculum== "" %}
+                                                    <div>
+                                                        <label>Curriculum Adjunto</label>
+                                                    </div>
+                                                {% else %}
+                                                    <div>
+                                                       <label>CV Adjunto :</label>
+                                                       {{ Postulacion.usuario.informacion.curriculum }}
+                                                       <a href="{{ app.request.basepath }}/upload/{{ Postulacion.usuario.informacion.curriculum }}"    download="{{ Postulacion.usuario.informacion.curriculum }}">Descargar su curriculum : {{ Postulacion.usuario.informacion.curriculum }} </a>
+                                                    </div>
+                                                {% endif %}
+                                            <hr>
+                                            <hr/>
+                                        {% endfor %}
+
+
+
+
+                            <div align="right">
+                                <form>  <input type='button' onclick='window.print();' value='Imprimir' class="btn btn-info" /></form>
+                                <div/>
+                        </div><!--/center-->
+
+
+
+
+                </div>
+
+
+                </div>
+
+
+
+            </div>
+            </div>
+
+
+        </div><!-- /container -->
+    </div>
+    </div>
+{% endblock %}

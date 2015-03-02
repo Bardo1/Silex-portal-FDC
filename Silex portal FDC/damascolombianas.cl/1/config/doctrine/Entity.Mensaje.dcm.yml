@@ -1,0 +1,22 @@
+#config/doctrine/Entity.Mensaje.dcm.yml
+Entity\Mensaje:
+
+    type: entity
+    table: mensaje
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        fecha:
+            type: datetime
+        titulo:
+            type: string
+            lenght: 255
+        descripcion:
+            type: string
+            lenght: 255
+
+    lifecycleCallbacks: {  }

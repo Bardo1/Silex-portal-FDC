@@ -1,0 +1,63 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="navbar-form navbar-left" role="search">
+                            <h2>Buscar trabajo</h2>
+                            <h>Palabra clave</h>
+                            <br> </br>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Buscar">
+                            </div>
+                            <button type="submit" class="btn btn-default">Buscar Ofeta</button>
+                        </form>
+                    </div></div></div>
+            <br> </br>
+            <!--left-->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {% for OfertaLaboral in ofertas %}
+
+                            {% if OfertaLaboral.visibilidad=="activada"  %}
+                                    <td>{{ OfertaLaboral.id }}</td>
+                                    <BR>
+                                    <td>{{ OfertaLaboral.fechapublicacion|date('Y-m-d')}}</td>
+                                    <BR>
+                                    <td>{{ OfertaLaboral.Descripcion }}</td>
+                                    <BR>
+                                    <td>{{ OfertaLaboral.requisitos }}</td>
+                                    <BR>
+                                    <td>{{ OfertaLaboral.ubicacion }}</td>
+                                    <BR>
+                                    <td>{{ OfertaLaboral.beneficios }}</td>
+                                    <BR>
+                                    <td>{{ OfertaLaboral.visibilidad }}</td>
+                                    <BR>
+                     {% endif %}
+
+
+                    {% endfor %}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h id="Anio1"> Titulo de </h>
+                                    <p id="Mes1" name="Mes1" value='asdad'></p>
+                                    <p id="Dia1" name="Dia1"></p>
+                                    <a href="OfertaDesplegada.php?Mes=<?php echo $Mes1;?>&dia=<?php  echo $Dia1;?>&Anio=<?php  echo $Anio1;?>&Descrip=<?php  echo $Descrip1;?>&Bene=<?php  echo $Bene1;?>&Ubi=<?php  echo $Ubi1;?>&Reque=<?php  echo  $Requi1;?>">Ver Oferta laboral</a>
+                                </div>
+                            </div>
+                            <p>No se han encontrado Ofertas en la base de datos</p>
+                        </div><!--/center-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- /container -->
+    </div>
+{% endblock %}

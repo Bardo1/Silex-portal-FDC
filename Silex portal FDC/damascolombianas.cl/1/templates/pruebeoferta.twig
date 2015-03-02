@@ -1,0 +1,56 @@
+
+
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+ {% endblock %}
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+        <br> </br>
+        <!--left-->
+        <div class="row">
+            <div class="col-xs-3 ">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend>Panel de Administrador</legend>
+                        <hr>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="nav-header"></li>
+                            <li ><a href="{{ app.url_generator.generate('buscaperfilo', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Mi CV</a></li>
+                            <li><a href="{{ app.url_generator.generate('buscaperfilo2', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Actualizar CV</a></li>
+                            <li><a href="{{ app.url_generator.generate('sub') }}" title="Bootstrap 3 Panel">Subir curriculum</a></li>
+                            <li ><a href="{{ app.url_generator.generate('mensajes') }}" title="Bootstrap 3 Icons">Mensajes</a></li>
+                            <li><a href="{{ app.url_generator.generate('ofertaspostulaciones', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Postulaciones</a></li>
+                        </ul>
+                    </div><!-- /span-3 -->
+                </div>
+            </div>
+
+             {% for ofertaLaboral in ofertalaboral %}
+                        <tr>
+                            <td >{{ ofertaLaboral.id }}</td>
+                            <td >{{ ofertaLaboral.fechapublicacion|date("F jS \\a\\t g:ia") }}</td>
+                            <td >{{ ofertaLaboral.Descripcion }}</a></td>
+                            <td >{{ ofertaLaboral.ubicacion }}</td>
+                        </tr>
+                {% endfor %}
+
+    </div>
+    </div>
+{% endblock %}

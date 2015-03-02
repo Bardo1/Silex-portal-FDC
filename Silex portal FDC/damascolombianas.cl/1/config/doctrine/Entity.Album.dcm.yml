@@ -1,0 +1,27 @@
+#config/doctrine/Entity.OfertaLaboral.dcm.yml
+Entity\Album:
+    type: entity
+    table: album
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        titulo:
+            type: string
+            lenght: 800
+        url:
+            type: string
+            lenght: 800
+        descripcion:
+            type: string
+            lenght: 800
+
+    oneToMany:
+       fotos:
+           targetEntity: Foto
+           mappedBy: album
+                 
+    lifecycleCallbacks: {  }

@@ -1,0 +1,34 @@
+#config/doctrine/Entity.OfertaLaboral.dcm.yml
+Entity\OfertaLaboral:
+    type: entity
+    table: oferta_laboral
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fecha_publicacion:
+            type: datetime
+        descripcion:
+            type: string
+            lenght: 800
+        requisitos:
+            type: string
+            lenght: 800
+        ubicacion:
+            type: string
+            lenght: 800
+        beneficios:
+             type: string
+             lenght: 800
+        visibilidad:
+             type: string
+             lenght: 800
+    oneToMany:
+       postulaciones:
+           targetEntity: Postulacion
+           mappedBy: oferta_laboral
+                 
+    lifecycleCallbacks: {  }

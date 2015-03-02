@@ -1,0 +1,262 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a  class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+{% block content %}
+    <br> </br>
+    <br> </br>
+
+    <div class="container">
+    <br> </br>
+    <!--left-->
+    <div class="row">
+    <div class="col-xs-3 ">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <legend>Panel de usuario</legend>
+                <hr>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-header"></li>
+                    <li ><a href="{{ app.url_generator.generate('buscaperfilo', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Mi CV</a></li>
+                    <li class="active" ><a href="{{ app.url_generator.generate('buscaperfilo2', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Actualizar CV</a></li>
+                    <li><a href="{{ app.url_generator.generate('sub') }}" title="Bootstrap 3 Panel">Subir curriculum</a></li>
+                    <li ><a href="{{ app.url_generator.generate('mensajes') }}" title="Bootstrap 3 Icons">Mensajes</a></li>
+                    <li><a href="{{ app.url_generator.generate('postulacionesusuario', {'id': app.session.get('id').id  }) }}" title="Bootstrap 3 ListGroup">Postulaciones</a></li>
+                </ul>
+            </div><!-- /span-3 -->
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-8">
+    <div class="panel panel-default">
+    <div class="panel-body">
+
+    {% if resultado is  defined %}
+        {% if resultado== true %}
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                <strong>Exito!</strong>  Los datos han sido modificados!
+            </div>
+        {% endif %}
+        {% if resultado==false %}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                <strong>Error!</strong>   Los datos no han sido modificados!
+            </div>
+        {% endif %}
+    {% endif %}
+
+        {% for usuario in usuario %}
+    <form class="form-horizontal" action="{{ app.url_generator.generate('modificar_informacion_contacto') }}" method="post" >
+    <fieldset>
+    <!-- Form Name -->
+    <legend>Modificar datos de usuario</legend>
+    <!-- Fila 1-->
+    <legend>Información</legend>
+
+    <div class="row">
+        <div class="control-group">
+            <label class="control-label" for="textinput"></label>
+            <div class="controls">
+                <input   type="hidden" id="id" name="id"  value="{{ app.session.get('id').id }}" size=70   placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Nombres</label>
+            <div class="controls">
+                <input id="nombres" name="nombres"  value="{{ usuario.informacion.nombres }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Apellido Paterno</label>
+            <div class="controls">
+                <input id="apellidopaterno" name="apellidopaterno" value="{{  usuario.informacion.apellidopaterno }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Apellido Materno</label>
+            <div class="controls">
+                <input id="apellidomaterno" name="apellidomaterno" value="{{  usuario.informacion.apellidomaterno }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+    </div>
+    <!-- Fila 2-->
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label" for="selectbasic">Fecha de nacimiento</label>
+            <div class="controls">
+
+                <input type="date" name="fechanacimiento" id="fechanacimiento" value="">
+            </div>
+        </div>
+        <!-- Multiple Radios -->
+        <div class="col-md-3">
+            <label class="control-label" for="radios">Sexo</label>
+            <div class="controls">
+                <label class="radio" for="radios-0">
+                    <input type="radio" name="sexo" id="sexo" value="Masculino" checked="checked" value="{% if  usuario.informacion.sexo== "masculino" %}{{ informacion.sexo }}{% endif %}">
+                    Masculino
+                </label>
+                <label class="radio" for="radios-1">
+                    <input type="radio" name="sexo" id="sexo" value="Femenino" value="{% if  usuario.informacion.sexo== "femenino" %}{{ informacion.sexo }}{% endif %}">
+                    Femenino
+                </label>
+            </div>
+        </div>
+        <!-- Text input-->
+    </div>
+    <!-- Fila 2-->
+    <div class="row">
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Estado civil</label>
+            <div class="controls">
+                <input id="estadocivil" name="estadocivil" value="{{  usuario.informacion.estadocivil }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Nacionalidad</label>
+            <div class="controls">
+                <input id="nacionalidad" name="nacionalidad" value=" {{  usuario.informacion.nacionalidad }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+    </div>
+        <br> </br>
+    <!-- Text input-->
+
+
+    <legend>Contacto</legend>
+    <!-- Fila 3-->
+    <div class="row">
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Calle</label>
+            <div class="controls">
+                <input id="calle" name="calle" value="{{  usuario.contacto.calle  }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Numero</label>
+            <div class="controls">
+                <input id="numero" name="numero" value="{{  usuario.contacto.numero }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Otros</label>
+            <div class="controls">
+                <input id="otros" name="otros" value="{{  usuario.contacto.otros  }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+    </div>
+    <!-- Fila 4-->
+    <div class="row">
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Comuna</label>
+            <div class="controls">
+                <input id="comuna" name="comuna" value="{{  usuario.contacto.comuna }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-3">
+            <label class="control-label" for="textinput">Email</label>
+            <div class="controls">
+                <input id="email" name="email" value="{{  usuario.contacto.email }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-2">
+            <label class="control-label" for="textinput">Fono</label>
+            <div class="controls">
+                <input id="fono" size="3" name="fono" value="{{  usuario.contacto.fono }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="col-md-1">
+            <label class="control-label" for="textinput">Movil</label>
+            <div class="controls">
+                <input id="movil" size="3" name="movil" value="{{  usuario.contacto.movil }}" type="text" placeholder="" class="input-xlarge" required>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+    <br> </br>
+
+
+
+        <!-- Button (Double) -->
+    <div class="control-group">
+        <label class="control-label" for="button1id"></label>
+        <div class="controls">
+            <a href="#" class="btn btn-success"
+               data-toggle="modal"
+               data-target="#basicModal">Modificar datos</a>
+            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <b><h>Confirmar modificacion</h></b>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary">Aceptar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true" >Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br> </br>
+    </fieldset>
+    </form>
+
+
+
+    </div><!--/center-->
+    </div>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+    </div><!-- /container -->
+    </div>
+
+    </div><!-- /container -->
+
+
+
+
+{% endblock %}

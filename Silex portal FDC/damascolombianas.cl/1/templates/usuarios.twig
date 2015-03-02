@@ -1,0 +1,91 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+ {% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <br> </br>
+    <!--left-->
+    <div class="row">
+        <div class="col-xs-3 ">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <legend>Panel de Administrador</legend>
+                    <hr>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="nav-header"></li>
+                        <li ><a href="ModificarOfertaLaboral2.php" title="Bootstrap 3 ListGroup">Ingresar oferta laboral</a></li>
+                        <li><a href="ModificarOfertaLaboral2.php" title="Bootstrap 3 ListGroup">Modificar oferta laboral</a></li>
+                        <li><a href="EliminarOfertaLaboral.php" title="Bootstrap 3 ListGroup">Eliminar oferta laboral</a></li>
+                        <li class="active"><a href="EnviarAviso.php" title="Bootstrap 3 Icons">Enviar aviso</a></li>
+                    </ul>
+                </div><!-- /span-3 -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form  id="form2" name="form2" method="post" action="EnviarAviso.php" class="Enviar">
+                            <fieldset>
+                                <legend>Enviar aviso</legend>
+                                <label >Escriba el mensaje a enviar a todos los usuarios registrados de la FDC</label>
+                                <div class="control-group">
+                                    <label class="control-label" for="textarea"></label>
+                                    <div class="controls">
+                                        <textarea  style="width: 432px; height: 102px;" id="Mensa" name="Mensa"></textarea>
+                                        <br> </br>
+                                        <button type="submit" name="Enviar" id="Enviar"value="Enviar" class="btn btn-primary">Enviar aviso</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>RUT</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario.id }}</td>
+                            <td>{{ usuario.rut }}</td>
+                            <td>{{ usuario.email }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+{% endblock %}
+
+

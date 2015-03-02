@@ -1,0 +1,36 @@
+<?php
+$db =mysqli_connect("localhost","root","","pbase") or die('No se pudo conectar a la BD:
+' . mysqli_error());
+
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<?php
+$titulo="Conectarse a MySQL";
+?>
+<title><?PHP echo $titulo; ?></title>
+</head>
+<body bgcolor="#FFFFFF">
+<h1><?PHP echo $titulo; ?></h1>
+<hr>
+<p>
+Lista de paises</p>
+<table border="1">
+<tr><th>Pais</th></tr>
+<?php
+$db =mysqli_connect("localhost","root","","bdusuarios") or die('No se pudo conectar a la BD:
+' . mysqli_error());
+
+$result = mysqli_query($db,"select * from usuarios order by Numero") or die('consulta 1 fall&oacute;: ' . mysqli_error());
+while ($myrow = mysqli_fetch_array($result)) {
+print("<tr><td>".$myrow["Numero"]."</td></tr>");
+}
+mysqli_free_result($result); // Liberar conjunto de resultados
+mysqli_close($db);
+?>
+</table>
+</body>
+</html>

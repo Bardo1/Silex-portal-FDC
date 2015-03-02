@@ -1,0 +1,230 @@
+{% extends "layout.twig" %}
+
+ {% block contentbarra %}
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+ {% endblock %}
+
+{% block content %}
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+
+    <form class="form-horizontal" id="form1" name="form1" method="post" action="{{ app.url_generator.generate('guardarusuario') }}" >
+    <fieldset>
+    <br> </br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        {% if mensaje is defined %}
+                        <b>{{mensaje}}</b>
+                        {% endif %}
+                        {% if mensaje1 is defined %}
+                            <b>{{mensaje1}}</b>
+                        {% endif %}
+                        {% if mensaje2 is defined %}
+                            <b>{{mensaje2}}</b>
+                        {% endif %}
+                                <legend>Registro de Usuario</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="textinput">Correo Electronico</label>
+                                    <div class="controls">
+                                        <input  class="form-control" style="width:200px;" id="email" name="email" type="text" placeholder="@" class="input-xlarge" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="passwordinput">Clave</label>
+                                    <div class="controls">
+                                        <input class="form-control" style="width:200px;" id="clave" name="clave" type="password" placeholder="" class="input-xlarge" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="passwordinput">Repetir clave</label>
+                                    <div class="controls">
+                                        <input class="form-control" style="width:200px;" id="repclave" name="repclave" type="password" placeholder="" class="input-xlarge" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="textinput">Rut</label>
+                                    <div class="controls">
+                                        <input  class="form-control" style="width:200px;" id="rut" name="rut" type="text" placeholder="" class="input-xlarge" required>
+                                    </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /container -->
+    <br> </br>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                                <legend>Informacion</legend>
+                                <div class="row">
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Nombres</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="nombres" name="nombres"  value="" type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Apellido Paterno</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="apellidopaterno" name="apellidopaterno" value="" type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Apellido Materno</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="apellidomaterno" name="apellidomaterno" value="" type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fila 2-->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="selectbasic">Fecha de nacimiento</label>
+                                        <div class="controls">
+
+                                            <input type="date" name="fechanacimiento" id="fechanacimiento" value="">
+                                        </div>
+                                    </div>
+                                    <!-- Multiple Radios -->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="radios">Sexo</label>
+                                        <div class="controls">
+                                            <label class="radio" for="radios-0">
+                                                <input type="radio" name="sexo" id="sexo" value="Masculino" checked="checked" >
+                                                Masculino
+                                            </label>
+                                            <label class="radio" for="radios-1">
+                                                <input type="radio" name="sexo" id="sexo" value="Femenino" >
+                                                Femenino
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                </div>
+                                <!-- Fila 2-->
+                                <div class="row">
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Estado civil</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="estadocivil" name="estadocivil"  type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Nacionalidad</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="nacionalidad" name="nacionalidad"  type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /container -->
+
+    <br> </br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                           <!-- Form Name -->
+                                <legend>Contacto</legend>
+                                <!-- Fila 3-->
+                                <div class="row">
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Calle</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="calle" name="calle" type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Numero</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="numero" name="numero"  type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Otros</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="otros" name="otros" type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fila 4-->
+                                <div class="row">
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Comuna</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="comuna" name="comuna"  type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Email</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="email1" name="email1"  type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Fono</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="fono" size="3" name="fono"  type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4">
+                                        <label class="control-label" for="textinput">Movil</label>
+                                        <div class="controls">
+                                            <input  class="form-control" style="width:150px;" id="movil" size="3" name="movil" type="text" placeholder="" class="input-xlarge" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="singlebutton"></label>
+                                    <div class="controls">
+                                        <button id="Enviar" name="Enviar" class="btn btn-primary">Finalizar</button>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /container -->
+
+    </div>
+    </fieldset>
+    </form>
+
+{% endblock %}

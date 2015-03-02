@@ -1,0 +1,24 @@
+Funcionalidad de PHP:
+· Funciones de calendario y manipulación de calendarios usando MCAL
+· Programación orientada a objetos
+· Funciones para creación de archivos PDF
+· Funciones de manejo de cajeros cybercash
+· Parser de documentos XML
+· WDDX
+· Funciones de compresión de datos
+· Manejo de archivos DBM
+· Funciones para manipulación de fechas
+· Funciones para manejo de directorios
+· Funciones de encripción de datos
+· Funciones de acceso al filesystem
+· Funciones para manejo de FTP
+· Funciones de hashing
+· Generación dinámica de imágenes
+· Manejo de cuentas de mail IMAP y POP3
+· Funciones para envió de mail
+· Funciones de networking usando sockets
+· Funciones matemáticas
+· Serialización de estructuras de datos
+· Acceso a bases de datos (Mysql, Oracle, Postgress, Sybase, etc)
+· Manejo de expresiones regulares.
+· Manejo de sesiones.

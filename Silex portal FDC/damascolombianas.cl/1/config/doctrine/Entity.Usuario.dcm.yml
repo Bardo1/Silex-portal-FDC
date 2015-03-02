@@ -1,0 +1,39 @@
+#config/doctrine/Entity.Usuario.dcm.yml
+Entity\Usuario:
+
+    type: entity
+    table: usuario
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        email:
+            type: string
+            nullable: false
+            unique: true
+            lenght: 200
+        rut:
+            type: string
+            nullable: false
+            unique: true
+            lenght: 20
+        clave:
+            type: string
+            nullable: false
+            lenght: 200
+
+    oneToOne:
+        contacto:
+            targetEntity: Contacto
+        informacion:
+            targetEntity: Informacion
+
+    oneToMany:
+        postulaciones:
+            targetEntity: Postulacion
+            mappedBy: usuario
+
+    lifecycleCallbacks: {  }

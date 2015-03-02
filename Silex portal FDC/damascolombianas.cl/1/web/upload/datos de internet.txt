@@ -1,0 +1,13 @@
+
+
+usuario : 05500002241046@tchile
+
+contraseña : tchile
+
+soporte tecnico : 104
+
+soporte comercial : 107
+
+niombre de red wifi : 
+
+clave de red wifi : 

@@ -1,0 +1,127 @@
+{% extends "layout.twig" %}
+
+
+ {% block contentbarra %}
+
+
+     <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+     <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+     <li  class="active" ><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+     <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+     <li><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+     <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+ {% endblock %}
+
+{% block content %}
+
+    <br> </br>
+    <br> </br>
+    <br> </br>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                        <h2>Buscar trabajo</h2>
+
+                        <form class="form-horizontal" action="{{ app.url_generator.generate('busqueda') }}" method="post">
+                          <fieldset>
+                            <div class="control-group">
+                              <div class="row">
+                              <!-- Text input-->
+                                  <div class="col-md-5">
+                                      <label class="control-label" for="selectbasic">Palabra clave</label>
+                                      <div class="controls">
+                                          <input type="text"  size="25" name="bus" id="bus"  placeholder="Buscar">
+                                      </div>
+                                  </div>
+                                  <!-- Text input-->
+                                  <div class="col-md-4">
+                                      <label class="control-label" for="selectbasic">Fecha</label>
+                                      <div class="controls">
+                                          <input type="date" name="fechapubli" id="fechapubli" value="">
+                                      </div>
+                                  </div>
+                                  <!-- Text input-->
+                                  <div class="col-md-2">
+                                      <label class="control-label" for="textinput">ID</label>
+                                      <div class="controls">
+                                          <input id="id1" name="id1" value="" type="text" placeholder="" size="3" >
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                             <button type="submit" class="btn btn-default">Buscar oferta</button>
+                              </div>
+                      </div>
+                        </fieldset>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                        <tr>
+                            <div class="row">
+                               <div class="col-xs-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th><label>Id</label>
+                                        <a  href="{{ app.url_generator.generate('ordenarid') }}">↑</a>
+                                        <a  href="{{ app.url_generator.generate('ordenarid1') }}">↓</a>
+                                    </th>
+                                    <th><label>Fecha</label>
+                                        <a  href="{{ app.url_generator.generate('ordenarfecha') }}">↑</a>
+                                        <a  href="{{ app.url_generator.generate('ordenarfecha1') }}">↓</a></th>
+                                    <th>Descripción</th>
+                                    <th>Ubicación</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if ofertalaboral!=null  %}
+                                {% for OfertaLaboral in ofertalaboral %}
+                                {% if OfertaLaboral.visibilidad=="Activada"  %}
+                                <tr>
+                                    <td >{{ OfertaLaboral.id }}</td>
+                                    <td >{{ OfertaLaboral.fechapublicacion|date("Y/m/d") }}</td>
+                                    <td ><a href="{{ app.url_generator.generate('ofertadesplegada', {'id': OfertaLaboral.id }) }}" title="Boo">{{ OfertaLaboral.Descripcion|length > 10 ? OfertaLaboral.Descripcion|slice(0, 10) ~ '...' : OfertaLaboral.Descripcion  }}</a></td>
+                                    <td >{{ OfertaLaboral.ubicacion }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                    <strong>No se encontraron ofertas laborales</strong>
+                                {% endif %}
+                                </tbody>
+                            </table>
+                                </div>
+                            </div>
+                        </tr>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <br> </br>
+    <br> </br>
+    <br> </br>
+    {% if ofertalaboral is empty %}
+        <br> </br>
+        <br> </br>
+        <br> </br>
+        <br> </br>
+        <br> </br>
+    {% endif%}
+    <br> </br>
+{% endblock %}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}Fundación Damas Colombianas{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/main.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/bootstrap-social-gh-pages\bootstrap-social.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/bootstrap-social-gh-pages\bootstrap-social.less" rel="stylesheet">
+    <!--[if lt IE 9]>
+
+
+<!-- DEPENDENCIAS -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+
+    <link href="{{ app.request.basepath }}/dist/summernote.css" />
+    <script src="{{ app.request.basepath }}/dist/summernote.min.js"></script>
+
+    <!-- link botones sociales el link y el script -->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/style.css">
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <script src="{{ app.request.basepath }}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+
+<body background="{{ app.request.basepath }}/images/bg-11-full.jpg" >
+
+<!-- Header -->
+<div id="summernote">Este es mi editor WYSIWYG</div>
+
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ app.request.basepath }}/web/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="{{ app.request.basepath }}/web/js/vendor/bootstrap.min.js"></script>
+<script src="{{ app.request.basepath }}/web/js/main.js"></script>
+
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown-toggle').dropdown()
+    });
+</script>
+<script type="text/javascript" src="{{ app.request.basepath }}/js/jquery-1.7.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{ app.request.basepath }}/js/bootstrap.min.js"></script>
+<script src="../../assets/js/docs.min.js"></script>
+
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21422990-1']);
+    _gaq.push(['_setDomainName', 'none']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<!-- Carrousel -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#myCarousel").carousel();
+    });
+</script>
+
+
+<!-- JavaScript -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#myCarousel").carousel();
+    });
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+$('#summernote').summernote();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}Bootstrap, from Twitter{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/main.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/bootstrap-social-gh-pages\bootstrap-social.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/bootstrap-social-gh-pages\bootstrap-social.less" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- link botones sociales el link y el script -->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/style.css">
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <style type="text/css">
+        body
+        {
+            background-repeat: no-repeat;
+            background-attachment: fixed
+        }
+        .myModal {
+            width: 200px;
+        }
+        .navbar-static-top {
+            margin-bottom:20px;
+        }
+        i {
+            font-size:16px;
+        }
+        .nav > li > a {
+            color:#787878;
+        }
+        footer {
+            margin-top:20px;
+            padding-top:20px;
+            padding-bottom:20px;
+            background-color:#efefef;
+        }
+        .nav>li .count {
+            position: absolute;
+            bottom: 12px;
+            right: 6px;
+            font-size: 10px;
+            font-weight: normal;
+            background: rgba(51,200,51,0.55);
+            color: rgba(255,255,255,0.9);
+            line-height: 1em;
+            padding: 2px 4px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            border-radius: 10px;
+        }
+        .list-unstyled li > ul > li {
+            margin-left:10px;
+            padding:8px;
+        }
+        .footer
+        {
+            position: relative;
+            margin-top: -150px;
+            height: 150px;
+            clear:both;
+            padding-top:20px;
+            color:#000000;
+        }
+    </style>
+    <script src="{{ app.request.basepath }}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+
+<body background="{{ app.request.basepath }}/images/bg-11-full.jpg"  >
+
+<!-- Header -->
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand logo-nav" href="index.php">
+                <img  border="0" height="90" width="200" src="{{ app.request.basepath }}/images/logo1.png">
+            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Inicio</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="glyphicon glyphicon-home" href="{{ app.url_generator.generate('inicio') }}">Inicio</a></li>
+                <li><a class="glyphicon glyphicon-book" href="{{ app.url_generator.generate('nosotros') }}">Nosotros</a></li>
+                <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('ofertalaboral') }}">Bolsa de empleos</a></li>
+                <li><a class="glyphicon glyphicon-lock" href="{{ app.url_generator.generate('publicaoferta') }}">Oportunidad laboral</a></li>
+                <li class="active" ><a class="glyphicon glyphicon-camera"  href="{{ app.url_generator.generate('eventos1') }}">Eventos</a></li>
+                <li><a class="glyphicon glyphicon-pencil" href="{{ app.url_generator.generate('informaciones') }}">Agenda anual</a></li>
+
+
+                {% if app.session.get('user') is null %}
+                    <li class="dropdown" id="menuLogin">
+                        <a class="glyphicon glyphicon-user" class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin"> Login </a>
+                        <div class="dropdown-menu" style="padding:17px;">
+                            <form  id="form2" name="form2" action="{{ app.url_generator.generate('login1') }}" method="post">
+                                <fieldset>
+                                    <input name="username" id="username" type="text" placeholder="Correo electronico">
+                                    <input name="password" id="password" type="password" placeholder="Password"><br>
+                                    <button type="submit" name="login" id="login" value="login" class="btn btn-primary">Iniciar Sesion</button>
+                                    <a href="{{ app.url_generator.generate('registrodeusuario') }}">Registrarse</a><br>
+                                    <a href="{{ app.url_generator.generate('reenviarcontrasenia') }}">Olvido Contraseña?</a><br>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="dropdown" id="menuLogin">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{ app.session.get('user').username }}</a>
+                        <div class="dropdown-menu" style="padding:17px;">
+                            <form  id="form3" name="form3" action="{{ app.url_generator.generate('cerrar') }}" method="post">
+                                <div>
+                                    <button type="submit" name="loginout" id="loginout" value="entrada" class="btn btn-primary">Perfil de usuario</button>
+                                </div>
+                            </form>
+                            <br>
+                            <form  id="form3" name="form3" action="{{ app.url_generator.generate('cerrar') }}" method="post">
+                                <div>
+                                    <button type="submit" name="loginout" id="loginout" value="loginout" class="btn btn-danger">Cerrar sesion</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+            <li><a href="https://www.facebook.com/fdcchile" class="nbs-social-facebook"></a>
+                <a href="https://twitter.com/adc_chile" class="nbs-social-twitter"></a>
+            </li>
+            </ul>
+        </div>
+    </div><!-- /container -->
+</div>
+<!-- /Header -->
+
+<br> </br>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div align="center">
+                <br>
+                <h4>  {{ album.titulo }} </h4>
+                <br>
+                <br> </br>
+            {{ album.descripcion }}
+                <br> </br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% if foto is empty %}
+    <br> </br>
+    <br> </br>
+    <br> </br>
+    <br> </br>
+    <br> </br>
+{% endif%}
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="row">
+                {% for foto in foto %}
+                <div class="col-lg-3 col-sm-4 col-6">
+                    <div class="panel panel-default">
+
+                        <span>
+                       <img type="hidden"  src="{{ app.request.basepath }}/images/{{ foto.url }}"  alt="{{ foto.id }}" title="{{ foto.id }} {{ foto.descripcion }}" class="thumbnail img-responsive">
+
+                            {{ foto.descripcion|length > 75 ? foto.descripcion|slice(0, 75) ~ '...' : foto.descripcion  }}
+
+                        </span>
+                    </div>
+                </div>
+                    {% if  (loop.index == 4 )  or ( loop.index == 8) or ( loop.index == 12)or ( loop.index == 16)or ( loop.index == 20)or ( loop.index == 24)or ( loop.index == 28)or ( loop.index == 32) %}
+
+
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" align="center">
+            <div class="modal-header" align="center">
+
+            <h4 class="modal-title" align="center"></h4>
+            </div>
+            <div class="modal-body next" align="center"></div>
+            <div class="modal-footer" align="center">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" align="center" tabindex="-1" role="dialog"  style=" margin-left: auto;
+margin-right: auto;
+float: none;"  >
+
+    <div class="modal-dialog" align="center">
+        <div class="modal-content" align="center">
+            <div class="modal-body next" align="center" >
+
+            </div>
+        </div>
+    </div>
+  </div>
+
+<br> </br>
+<br> </br>
+
+    <hr>
+    <footer style="background-color:#000000;clear:both;text-align:center">
+    <div class="container">
+        <p><a href="" rel="author">Fundación Damas Colombianas</a> </p>
+    </div>
+    </footer>
+</div> <!-- /container -->
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ app.request.basepath }}/web/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="{{ app.request.basepath }}/web/js/vendor/bootstrap.min.js"></script>
+<script src="{{ app.request.basepath }}/web/js/main.js"></script>
+
+
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown-toggle').dropdown()
+    });
+</script>
+<script type="text/javascript" src="{{ app.request.basepath }}/js/jquery-1.7.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{ app.request.basepath }}/js/bootstrap.min.js"></script>
+<script src="../../assets/js/docs.min.js"></script>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21422990-1']);
+    _gaq.push(['_setDomainName', 'none']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<!-- Carrousel -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#myCarousel").carousel();
+    });
+</script>
+
+<script type="text/javascript">
+
+    $('.thumbnail').click(function(){
+        $('.modal-body').empty();
+        var title = $(this).parent('a').attr("title");
+        $('.modal-title').html(title);
+        $($(this).parents('div').html()).appendTo('.modal-body');
+        $('#myModal').modal({show:true});
+    });
+
+</script>
+
+<!-- JavaScript -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#myCarousel").carousel();
+    });
+</script>
+
+
+
+</body>
+</html>

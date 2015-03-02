@@ -1,0 +1,220 @@
+<?php
+
+namespace Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Postulacion
+ *
+ * @ORM\Table(name="postulacion")
+ * @ORM\Entity
+ */
+class Postulacion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="experiencia", type="string")
+     */
+    private $experiencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nivel_educacional", type="string")
+     */
+    private $nivel_educacional;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pretension_renta", type="string")
+     */
+    private $pretension_renta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="disponibilidad", type="string")
+     */
+    private $disponibilidad;
+
+    /**
+     * @var \Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Entity\OfertaLaboral
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\OfertaLaboral")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="oferta_laboral_id", referencedColumnName="id")
+     * })
+     */
+    private $oferta_laboral;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set experiencia
+     *
+     * @param string $experiencia
+     * @return Postulacion
+     */
+    public function setExperiencia($experiencia)
+    {
+        $this->experiencia = $experiencia;
+
+        return $this;
+    }
+
+    /**
+     * Get experiencia
+     *
+     * @return string 
+     */
+    public function getExperiencia()
+    {
+        return $this->experiencia;
+    }
+
+    /**
+     * Set nivel_educacional
+     *
+     * @param string $nivelEducacional
+     * @return Postulacion
+     */
+    public function setNivelEducacional($nivelEducacional)
+    {
+        $this->nivel_educacional = $nivelEducacional;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel_educacional
+     *
+     * @return string 
+     */
+    public function getNivelEducacional()
+    {
+        return $this->nivel_educacional;
+    }
+
+    /**
+     * Set pretension_renta
+     *
+     * @param string $pretensionRenta
+     * @return Postulacion
+     */
+    public function setPretensionRenta($pretensionRenta)
+    {
+        $this->pretension_renta = $pretensionRenta;
+
+        return $this;
+    }
+
+    /**
+     * Get pretension_renta
+     *
+     * @return string 
+     */
+    public function getPretensionRenta()
+    {
+        return $this->pretension_renta;
+    }
+
+    /**
+     * Set disponibilidad
+     *
+     * @param string $disponibilidad
+     * @return Postulacion
+     */
+    public function setDisponibilidad($disponibilidad)
+    {
+        $this->disponibilidad = $disponibilidad;
+
+        return $this;
+    }
+
+    /**
+     * Get disponibilidad
+     *
+     * @return string 
+     */
+    public function getDisponibilidad()
+    {
+        return $this->disponibilidad;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Entity\Usuario $usuario
+     * @return Postulacion
+     */
+    public function setUsuario(\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set oferta_laboral
+     *
+     * @param \Entity\OfertaLaboral $ofertaLaboral
+     * @return Postulacion
+     */
+    public function setOfertaLaboral(\Entity\OfertaLaboral $ofertaLaboral = null)
+    {
+        $this->oferta_laboral = $ofertaLaboral;
+
+        return $this;
+    }
+
+    /**
+     * Get oferta_laboral
+     *
+     * @return \Entity\OfertaLaboral 
+     */
+    public function getOfertaLaboral()
+    {
+        return $this->oferta_laboral;
+    }
+}

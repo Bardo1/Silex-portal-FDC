@@ -1,0 +1,23 @@
+#config/doctrine/Entity.Postulacion.dcm.yml
+Entity\Foto:
+    type: entity
+    table: foto
+
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+               strategy: AUTO
+        url:
+            type: string
+            lenght: 255
+        descripcion:
+            type: string
+            lenght: 255
+    manyToOne:
+        album:
+            targetEntity: Album
+            inverseBy: fotos
+
+    lifecycleCallbacks: {  }
